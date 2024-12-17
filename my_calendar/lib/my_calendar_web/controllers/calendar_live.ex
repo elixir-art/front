@@ -81,7 +81,7 @@ defmodule MyCalendarWeb.CalendarLive do
 
     empty_days_after = get_empty_days_after(days, empty_days_before)
 
-    empty_days_before ++ days ++ empty_days_after |> IO.inspect(label: "DAYS")
+    (empty_days_before ++ days ++ empty_days_after) |> IO.inspect(label: "DAYS")
   end
 
   defp get_months() do
@@ -115,6 +115,7 @@ defmodule MyCalendarWeb.CalendarLive do
 
   defp get_empty_days_after(days, empty_days_before) do
     empty_days_after_quantity = 7 - rem(length(days) + length(empty_days_before), 7)
+
     if empty_days_after_quantity == 7 do
       []
     else
