@@ -6,6 +6,7 @@ const fs = require("fs")
 const path = require("path")
 
 module.exports = {
+  darkMode: 'class', // For Dark theme
   content: [
     "./js/**/*.js",
     "../lib/calander_web.ex",
