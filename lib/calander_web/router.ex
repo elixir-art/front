@@ -18,7 +18,7 @@ defmodule CalanderWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
-    live("/calander", PageHtml.Calander)
+    live("/calendar", PageHtml.Calander)
   end
 
   # Other scopes may use custom stacks.
