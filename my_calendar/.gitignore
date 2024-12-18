@@ -35,3 +35,7 @@ my_calendar-*.tar
 npm-debug.log
 /assets/node_modules/
 
+dev.sqlite3
+dev.sqlite3-shm
+dev.sqlite3-wal
+

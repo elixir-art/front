@@ -1,15 +1,19 @@
 import Config
 
 # Configure your database
+# config :my_calendar, MyCalendar.Repo,
+#   username: "postgres",
+#   password: "postgres",
+#   hostname: "localhost",
+#   database: "my_calendar_dev",
+#   stacktrace: true,
+#   show_sensitive_data_on_connection_error: true,
+#   pool_size: 10,
+#   port: 5434
+
 config :my_calendar, MyCalendar.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "my_calendar_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10,
-  port: 5434
+  database: "dev.sqlite3",
+  pool_size: 5
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
