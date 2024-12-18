@@ -43,7 +43,7 @@ defmodule MySuperCalendarWeb.CalendarPage do
             </li>
           <% else %>
             <%= if month_day == 18 do %>
-              <li class="flex justify-center items-center w-[57px] h-[57px] rounded-full bg-[tomato] dark:bg-lime-600 text-white">
+              <li class="flex justify-center items-center w-[57px] h-[57px] rounded-full bg-[#e83b27] dark:bg-lime-600 text-white">
                 <%= month_day %>
               </li>
             <% else %>
