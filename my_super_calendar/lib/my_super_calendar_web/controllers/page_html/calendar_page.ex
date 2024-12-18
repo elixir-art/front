@@ -30,7 +30,7 @@ defmodule MySuperCalendarWeb.CalendarPage do
       </div>
       <ul class="flex gap-[3px]">
         <%= for week_day <- @week_days do %>
-          <li class="flex justify-center items-center w-[57px] h-[57px] text-lg text-black dark:text-white">
+          <li class="flex justify-center items-center w-[55px] h-[55px] text-lg text-black dark:text-white">
             <%= week_day %>
           </li>
         <% end %>
@@ -38,16 +38,16 @@ defmodule MySuperCalendarWeb.CalendarPage do
       <ul class="flex flex-wrap gap-[3px]">
         <%= for {month_day, index} <- Enum.with_index(@days_in_month) do %>
           <%= if index == 0 do %>
-            <li class="flex justify-center items-center ml-[180px] w-[57px] h-[57px] text-gray-500 dark:text-gray-400">
+            <li class="flex justify-center items-center ml-[180px] w-[55px] h-[55px] text-gray-500 dark:text-gray-400">
               <%= month_day %>
             </li>
           <% else %>
             <%= if month_day == 18 do %>
-              <li class="flex justify-center items-center w-[57px] h-[57px] rounded-full bg-[#e83b27] dark:bg-lime-600 text-white">
+              <li class="flex justify-center items-center w-[55px] h-[55px] rounded-full bg-[#e83b27] dark:bg-lime-600 text-white">
                 <%= month_day %>
               </li>
             <% else %>
-              <li class="flex justify-center items-center w-[57px] h-[57px] text-gray-500 dark:text-gray-400">
+              <li class="flex justify-center items-center w-[55px] h-[55px] text-gray-500 dark:text-gray-400">
                 <%= month_day %>
               </li>
             <% end %>
