@@ -19,6 +19,7 @@ defmodule FrontAppWeb.Router do
 
     get "/", PageController, :home
     live "/calendar", Calendar
+    live "/to_do", ToDo
   end
 
   # Other scopes may use custom stacks.

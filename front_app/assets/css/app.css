@@ -9,6 +9,11 @@
       --color-primary: 255 255 255;
       --color-text-primary: 30 31 37;
       --color-text-secondary: 102 102 102;
+      --color-primary-purple: 24 24 50;
+      --color-secondary-purple: 16 16 37;
+      --color-third-purple: 13 13 34;
+      --color-light-purple: 97 97 243;
+      --color-additional-purple: 74 74 134;
     }
 
     :root [class~="dark"] {

@@ -19,6 +19,11 @@ module.exports = {
         primary: "rgb(var(--color-primary))",
         textp: "rgb(var(--color-text-primary))",
         texts: "rgb(var(--color-text-secondary))",
+        primary_purple: "rgb(var(--color-primary-purple))",
+        secondary_purple: "rgb(var(--color-secondary-purple))",
+        third_purple: "rgb(var(--color-third-purple))",
+        light_purple: "rgb(var(--color-light-purple))",
+        additional_purple: "rgb(var(--color-additional-purple))",
       }
     },
   },
