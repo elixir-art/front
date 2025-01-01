@@ -6,6 +6,7 @@ const fs = require("fs")
 const path = require("path")
 
 module.exports = {
+  darkMode: 'selector',
   content: [
     "./js/**/*.js",
     "../lib/front_end_web.ex",
@@ -14,7 +15,12 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: "#FD4F00",
+        'coal': "#1E1F25",
+        'primary': "#333333",
+        'secondary': "#666666",
+        'secondary-dark':"#CCCCCC",
+        'selected': "#FB3F4A",
+        'selected-dark':"#589C5F"
       }
     },
   },

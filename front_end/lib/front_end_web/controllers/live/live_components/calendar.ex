@@ -18,12 +18,12 @@ defmodule FrontEndWeb.CalendarComponent do
   @months ~w"January February March April May June July August September October November December"
   def render(assigns) do
     ~H"""
-    <div class="bg-white dark:bg-slate-800 rounded-lg shadow-lg p-4 max-w-md mx-auto">
-      <div class="flex justify-between items-center mb-4">
-        <div class="text-lg font-semibold text-gray-800 dark:text-white">
+    <div class="dark:bg-coal rounded-lg shadow-lg p-[72px] max-w-md mx-auto text-2xl font-medium">
+      <div class="flex justify-between items-center mb-[56px] text-primary dark:text-white">
+        <div class="font-bold">
           <span>{@current_month} {@initial_date.year}</span>
         </div>
-        <div class="flex flex-row dark:text-white">
+        <div class="flex flex-row">
           <Heroicons.icon
             name="chevron-left"
             type="outline"
@@ -40,12 +40,12 @@ defmodule FrontEndWeb.CalendarComponent do
           />
         </div>
       </div>
-      <div class="">
-        <table class="table-auto w-full ">
+      <div>
+        <table class="table-auto table-fixed w-full font-regular">
           <tr>
             <th
               :for={week_day <- ~w"Mo Tu We Th Fr Sa Su"}
-              class="px-2 py-2 text-sm text-center text-gray-600 dark:text-white"
+              class="px-2 py-2 text-center text-gray-600 dark:text-white"
             >
               {week_day}
             </th>
@@ -53,13 +53,20 @@ defmodule FrontEndWeb.CalendarComponent do
           <tr :for={week <- 0..(@weeks - 1)}>
             <td
               :for={day <- @calendar |> Enum.at(week)}
-              class={"text-center py-2 " <> (if day == @selected, do: "bg-red-500 dark:bg-green-500 text-white rounded-full", else: "text-slate-400 hover:bg-gray-300 dark:hover:bg-gray-600")}
+              class={"w-12 h-12 text-center align-middle " <>
+          (if day == @selected, do: "bg-selected dark:bg-selected-dark text-white rounded-full", else: "text-secondary dark:text-secondary-dark hover:bg-gray-300 dark:hover:bg-gray-600")}
               phx-click="select"
               phx-target={@myself}
               phx-value-day={day}
             >
               {day}
             </td>
+          </tr>
+          <tr :if={@weeks < 6} class="h-10">
+            <td colspan="7"></td>
+          </tr>
+          <tr :if={@weeks < 5} class="h-10">
+            <td colspan="7"></td>
           </tr>
         </table>
       </div>
