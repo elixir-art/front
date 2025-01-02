@@ -16,6 +16,8 @@ module.exports = {
     extend: {
       colors: {
         brand: "white",
+        circle_color: "#589C5F",
+        text_color: "#CCCCCC"
       }
     },
   },

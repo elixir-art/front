@@ -1,6 +1,6 @@
 <div class="bg-white dark:bg-gray-800 w-[560px] rounded-lg border border-gray-200 dark:border-gray-700 p-[72px]">
     <div class="flex items-center w-[416px] justify-between text-black dark:text-white">
-      <div class="flex justify-between h-[29px] items-center w-full mb-[56px]">
+      <div class="flex justify-between h-[29px] items-center w-full mb-[56px] dark:text-white">
         <h2 class="text-2xl  font-bold text-black dark:text-white">
           {@current_month} {@current_year}
         </h2>
@@ -60,10 +60,10 @@
           phx-click="select_day"
           phx-value-day={day[:date]}
           class={[
-            "flex justify-center items-center h-14 w-14 rounded-full cursor-pointer text-gray-500 dark:text-gray-300 font-semibold text-2xl",
+            "flex justify-center items-center h-14 w-14 rounded-full cursor-pointer text-gray-500 dark:text-text_color font-semibold text-2xl",
             (day[:date] == @selected_date.day and day[:current_month] == @selected_date.month and
                day[:current_year] == @selected_date.year &&
-               "bg-[#FB3F4A] text-white dark:bg-[#589C5F]") || ""
+               "bg-[#FB3F4A] text-white dark:bg-circle_color") || ""
           ]}
         >
           {if day[:date], do: day[:date], else: ""}
