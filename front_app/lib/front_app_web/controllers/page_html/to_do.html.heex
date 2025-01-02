@@ -1,7 +1,6 @@
 <div class="w-[746px] h-full pt-24 rounded-3xl bg-primary_purple relative">
-  <!-- Header -->
   <div class="mx-[72px] h-full pb-9 flex justify-between items-center">
-    <!-- Галочка -->
+
     <div class="flex items-center">
       <div class="w-10 h-10 rounded-lg bg-additional_purple flex items-center justify-end">
         <svg class="w-24 h-16 text-white text-xl font-black">
@@ -10,28 +9,20 @@
       </div>
       <span class="text-4xl font-bold text-white ml-4">Todolist</span>
     </div>
-    <!-- Налаштування -->
     <span class="text-white text-3xl cursor-pointer">⚙️</span>
   </div>
-    
-
-  <!-- Task List Container -->
   <div class="w-full h-full pt-5 rounded-3xl bg-secondary_purple">
     <%= for _n <- 1..21 do %>
     <div class="px-[72px]">
       <div class="rounded-[50px] w-full h-[112px] my-4 bg-third_purple  flex items-center px-6">
         <label class="relative">
-          <!-- Чекбокс -->
           <input type="checkbox" class="sr-only peer" />
-          <!-- Фон чекбоксу -->
           <div class="w-10 h-10 rounded-full bg-secondary_purple text-secondary_purple border border-light_purple peer-checked:text-white peer-checked:bg-light_purple flex items-center justify-center">
-            <!-- Галочка -->
             <svg class="w-6 h-6">
             <use href="/images/icons.svg#check"></use>
             </svg>
           </div>
         </label>
-        <!-- Текст -->
         <div class="ml-6">
           <span class="font-bold text-xl text-white">Task Title</span>
           <p class="text-sm text-white">Task description goes here</p>
@@ -39,14 +30,13 @@
       </div>
     </div>
     <% end %>
-
-  <div class="sticky bottom-0 left-0 " >
-      <div class="h-1/6 bg-secondary_purple flex justify-end  backdrop-blur-lg pr-4 py-4">
+    <div class="sticky bottom-0 left-0">
+    <div class="h-16 backdrop-blur-sm bg-gradient-to-t from-secondary_purple "></div>
+      <div class="h-full flex justify-end pr-4 px-4 bg-secondary_purple">
         <button class="w-16 h-16 bg-light_purple rounded-full flex items-center justify-center text-white text-4xl">
           +
         </button>
-      </div>
   </div>
-  <!-- Add Task Button -->
+</div>
 </div>
 </div>
