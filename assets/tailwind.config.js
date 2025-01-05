@@ -17,7 +17,8 @@ module.exports = {
       colors: {
         brand: "#FD4F00",
         blueHeader: "#161E54",
-        blueBody: "#1B204A"
+        blueBody: "#1B204A",
+        buttonRed: "#FF5151"
       }
     },
     container: {
