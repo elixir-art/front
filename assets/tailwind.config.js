@@ -21,6 +21,13 @@ module.exports = {
         buttonRed: "#FF5151"
       }
     },
+    screens: {
+      sm: '640px',       // Default
+      md: '860px',       // Custom breakpoint
+      lg: '1024px',      // Default
+      xl: '1280px',      // Default
+      '2xl': '1536px',   // Default
+    },
     container: {
   
       padding: {

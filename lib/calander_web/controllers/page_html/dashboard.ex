@@ -23,12 +23,12 @@ defmodule CalanderWeb.PageHtml.Dashboard do
             <p class="text-gray-400 text-xs pb-2">OTHER</p>
           </div>
           <div class="flex flex-col justify-center items-center gap-[30px]">
-              <svg class={@svg_size}>
-                <use href={~p"/images/sprite.svg#ic_support"}></use>
-              </svg>
-              <svg class={@svg_size}>
-                <use href={~p"/images/sprite.svg#ic_settings"}></use>
-              </svg>
+            <svg class={@svg_size}>
+              <use href={~p"/images/sprite.svg#ic_support"}></use>
+            </svg>
+            <svg class={@svg_size}>
+              <use href={~p"/images/sprite.svg#ic_settings"}></use>
+            </svg>
           </div>
         </div>
       </div>
@@ -45,7 +45,10 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                 </svg>
               </div>
               <div class="hidden md:block md:relative">
-                <input class="w-[245px] h-[36px] border-b-2 border-gray-200 bg-gray-100 rounded-md" placeholder="Search" />
+                <input
+                  class="w-[245px] h-[36px] border-b-2 border-gray-200 bg-gray-100 rounded-md"
+                  placeholder="Search"
+                />
                 <svg class={"absolute top-0 right-0 #{@svg_size}"}>
                   <use href={~p"/images/sprite.svg#search"}></use>
                 </svg>
@@ -68,16 +71,16 @@ defmodule CalanderWeb.PageHtml.Dashboard do
         <div class="container mx-auto bg-white">
           <section class="py-[20px]">
             <h1 class="py-[10px] text-xl font-medium">Dashboard</h1>
-            <ul class="flex flex-col gap-[20px]">
+            <ul class="flex flex-col gap-[20px] md:flex-row md:flex-wrap md:justify-center md:items-center">
               <%= for card <- @first_cards do %>
-                <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color}" }>
+                <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:w-[204px]" }>
                   <h2 class="font-medium text-lg"><%= card.title %></h2>
                   <p class="text-2xl"><%= card.number %></p>
                   <p class={"text-lg #{card.text_color}"}><%= card.description %></p>
                 </li>
               <% end %>
               <%= for card <- @second_cards do %>
-                <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100">
+                <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100 md:w-[312px] md:justify-center">
                   <div>
                     <div class="mb-[32px]">
                       <h2 class="font-medium text-lg mb-[22px]"><%= card.title %></h2>
@@ -144,77 +147,79 @@ defmodule CalanderWeb.PageHtml.Dashboard do
               See All Announcement
             </button>
           </section>
-          <section class="py-[20px]">
-            <div class="pl-[24px] pr-[48px] py-[24px] bg-blueHeader rounded-t-lg border-b-0">
-              <h2 class="font-medium text-lg text-white">Recently Activity</h2>
-            </div>
-            <div class="pl-[24px] pr-[48px] bg-blueBody pb-[40px] rounded-b-lg border-t-0">
-              <div class="flex flex-col gap-[5px] mb-[30px]">
-                <p class="pt-[30px] text-gray-400 text-sm">10.40 AM, Fri 10 Sept 2021</p>
-                <h3 class="font-medium text-lg text-white">You posted a new job</h3>
-                <p class="text-lg text-white">
-                  Kindly check the requirements and terms of work and make sure everything is right.
-                </p>
+          <div class="md:flex md:gap-[20px]">
+            <section class="py-[20px] md:w-[40%]">
+              <div class="pl-[24px] pr-[48px] py-[24px] bg-blueHeader rounded-t-lg border-b-0">
+                <h2 class="font-medium text-lg text-white">Recently Activity</h2>
               </div>
-              <div class="">
-                <h4 class="text-lg text-white mb-[20px]">Today you makes 12 Activity</h4>
-                <button
-                  class="bg-buttonRed text-white block px-[30px] py-[10px] font-medium rounded-md "
-                  type="button"
-                >
-                  See All Activity
-                </button>
-              </div>
-            </div>
-          </section>
-          <section class="py-[20px]">
-            <div class="pt-[20px] pb-[10px] px-[24px] rounded-t-xl border-2 border-gray-100">
-              <div class="flex justify-between items-center mb-[20px]">
-                <h2 class="font-medium text-lg">Upcoming Schedule</h2>
-                <button
-                  class="flex items-center gap-[5px] border-2 border-gray-100 p-1 rounded-md text-sm text-gray-400"
-                  type="button"
-                >
-                  Today, 13 Sep 2021
-                  <svg class="w-[18px] h-[18px]">
-                    <use href={~p"/images/sprite.svg#arrow_down_light"}></use>
-                  </svg>
-                </button>
-              </div>
-              <div class="">
-                <p class="pt-[20px] text-gray-500 mb-[5px]">Priority</p>
-                <div class="rounded-xl flex flex-col border-2 border-gray-100 bg-gray-50 p-2">
-                  <h3 class="text-lg px-[10px] pt-[5px]">Review candidate applications</h3>
-                  <div class="flex justify-between items-center px-[10px] pt-[5px]">
-                    <p class="text-sm text-gray-500">5 minutes ago</p>
-                    <svg class="w-[24px] h-[24px]">
-                      <use href={~p"/images/sprite.svg#carbon_overflow-menu-horizontal"}></use>
-                    </svg>
-                  </div>
+              <div class="pl-[24px] pr-[48px] bg-blueBody pb-[40px] rounded-b-lg border-t-0">
+                <div class="flex flex-col gap-[5px] mb-[30px]">
+                  <p class="pt-[30px] text-gray-400 text-sm">10.40 AM, Fri 10 Sept 2021</p>
+                  <h3 class="font-medium text-lg text-white md:text-base">You posted a new job</h3>
+                  <p class="text-lg text-white md:text-sm">
+                    Kindly check the requirements and terms of work and make sure everything is right.
+                  </p>
                 </div>
-                <p class="pt-[20px] mb-[10px]">Other</p>
-                <ul class="flex flex-col gap-[16px]">
-                  <%= for card <- @fourth_cards do %>
-                    <li class="rounded-xl border-2 border-gray-100 bg-gray-50 p-2">
-                      <h2 class="text-lg px-[10px] pt-[5px]"><%= card.title %></h2>
-                      <div class="flex justify-between items-center px-[10px] pt-[5px]">
-                        <p class="text-sm text-gray-500"><%= card.date_time %></p>
-                        <svg class="w-[24px] h-[24px]">
-                          <use href={~p"/images/sprite.svg#carbon_overflow-menu-horizontal"}></use>
-                        </svg>
-                      </div>
-                    </li>
-                  <% end %>
-                </ul>
+                <div class="">
+                  <h4 class="text-lg text-white mb-[20px] md:text-sm">Today you makes 12 Activity</h4>
+                  <button
+                    class="bg-buttonRed text-white block px-[30px] py-[10px] font-medium rounded-md "
+                    type="button"
+                  >
+                    See All Activity
+                  </button>
+                </div>
               </div>
-            </div>
-            <button
-              class="w-[100%] text-center py-[10px] rounded-b-lg border-gray-100 border-2 border-t-0 font-medium text-red-500"
-              type="button"
-            >
-              See All Announcement
-            </button>
-          </section>
+            </section>
+            <section class="py-[20px] md:w-[60%] md:h-[319px]">
+              <div class="pt-[20px] pb-[10px] px-[24px] rounded-t-xl border-2 border-gray-100">
+                <div class="flex justify-between items-center mb-[20px]">
+                  <h2 class="font-medium text-lg">Upcoming Schedule</h2>
+                  <button
+                    class="flex items-center gap-[5px] border-2 border-gray-100 p-1 rounded-md text-sm text-gray-400"
+                    type="button"
+                  >
+                    Today, 13 Sep 2021
+                    <svg class="w-[18px] h-[18px]">
+                      <use href={~p"/images/sprite.svg#arrow_down_light"}></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="">
+                  <p class="pt-[20px] text-gray-500 mb-[5px]">Priority</p>
+                  <div class="rounded-xl flex flex-col border-2 border-gray-100 bg-gray-50 p-2">
+                    <h3 class="text-lg px-[10px] pt-[5px]">Review candidate applications</h3>
+                    <div class="flex justify-between items-center px-[10px] pt-[5px]">
+                      <p class="text-sm text-gray-500">5 minutes ago</p>
+                      <svg class="w-[24px] h-[24px]">
+                        <use href={~p"/images/sprite.svg#carbon_overflow-menu-horizontal"}></use>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="pt-[20px] mb-[10px]">Other</p>
+                  <ul class="flex flex-col gap-[16px]">
+                    <%= for card <- @fourth_cards do %>
+                      <li class={"rounded-xl border-2 border-gray-100 bg-gray-50 p-2 #{card.display}"}>
+                        <h2 class="text-lg px-[10px] pt-[5px]"><%= card.title %></h2>
+                        <div class="flex justify-between items-center px-[10px] pt-[5px]">
+                          <p class="text-sm text-gray-500"><%= card.date_time %></p>
+                          <svg class="w-[24px] h-[24px]">
+                            <use href={~p"/images/sprite.svg#carbon_overflow-menu-horizontal"}></use>
+                          </svg>
+                        </div>
+                      </li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+              <button
+                class="w-[100%] text-center py-[10px] rounded-b-lg border-gray-100 border-2 border-t-0 font-medium text-red-500"
+                type="button"
+              >
+                See All Announcement
+              </button>
+            </section>
+          </div>
         </div>
       </div>
     </div>
@@ -286,11 +291,13 @@ defmodule CalanderWeb.PageHtml.Dashboard do
     fourth_cards = [
       %{
         title: "Interview with candidates",
-        date_time: "Today - 10.30 AM"
+        date_time: "Today - 10.30 AM",
+        display: ""
       },
       %{
         title: "Short meeting with product designer from IT Departement",
-        date_time: "Today - 09.15 AM"
+        date_time: "Today - 09.15 AM",
+        display: "md:hidden"
       }
     ]
 
