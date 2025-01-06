@@ -3,32 +3,41 @@ defmodule CalanderWeb.PageHtml.Dashboard do
 
   def render(assigns) do
     ~H"""
-    <div class="md:grid md:grid-cols-[100px_1fr]">
+    <div class="md:grid md:grid-cols-[100px_1fr] lg:grid-cols-[200px_1fr]">
       <div class="hidden md:block">
         <div class="flex items-center justify-center mb-[20px]">
           <h2 class="pt-[40px] px-[10px] font-semibold text-2xl">WeHR</h2>
         </div>
         <div>
-          <div class="flex items-center justify-center mb-[10px]">
+          <div class="flex items-center justify-center mb-[10px] lg:justify-start lg:pl-[30px]">
             <p class="text-gray-400 text-xs pb-2">MAIN MENU</p>
           </div>
-          <div class="flex flex-col justify-center items-center gap-[30px] mb-[30px]">
+          <div class="flex flex-col gap-[30px] mb-[30px] md:justify-center md:items-center lg:items-start lg:pl-[30px]">
             <%= for svg <- @svg_icons_sidebar do %>
-              <svg class={@svg_size}>
-                <use href={~p"/images/sprite.svg##{svg.svg_name}"}></use>
-              </svg>
+              <div class="flex gap-[15px]">
+                <svg class={@svg_size}>
+                  <use href={~p"/images/sprite.svg##{svg.svg_name}"}></use>
+                </svg>
+                <p class="hidden lg:inline"><%= svg.name %></p>
+              </div>
             <% end %>
           </div>
-          <div class="flex items-center justify-center mb-[10px]">
+          <div class="flex items-center justify-center mb-[10px] lg:justify-start lg:pl-[30px]">
             <p class="text-gray-400 text-xs pb-2">OTHER</p>
           </div>
-          <div class="flex flex-col justify-center items-center gap-[30px]">
-            <svg class={@svg_size}>
-              <use href={~p"/images/sprite.svg#ic_support"}></use>
-            </svg>
-            <svg class={@svg_size}>
-              <use href={~p"/images/sprite.svg#ic_settings"}></use>
-            </svg>
+          <div class="flex flex-col justify-center items-center gap-[30px] lg:items-start lg:pl-[30px]">
+            <div class="flex gap-[15px]">
+              <svg class={@svg_size}>
+                <use href={~p"/images/sprite.svg#ic_support"}></use>
+              </svg>
+              <p class="hidden lg:inline">Support</p>
+            </div>
+            <div class="flex gap-[15px]">
+              <svg class={@svg_size}>
+                <use href={~p"/images/sprite.svg#ic_settings"}></use>
+              </svg>
+              <p class="hidden lg:inline">Settings</p>
+            </div>
           </div>
         </div>
       </div>
@@ -302,11 +311,11 @@ defmodule CalanderWeb.PageHtml.Dashboard do
     ]
 
     svg_icons_sidebar = [
-      %{svg_name: "ic_dashboard"},
-      %{svg_name: "ic_recruitment"},
-      %{svg_name: "ic_calendar"},
-      %{svg_name: "ic_employee"},
-      %{svg_name: "ic_department"}
+      %{svg_name: "ic_dashboard", name: "Dashboard"},
+      %{svg_name: "ic_recruitment", name: "Recruitment"},
+      %{svg_name: "ic_calendar", name: "Calendar"},
+      %{svg_name: "ic_employee", name: "Employee"},
+      %{svg_name: "ic_department", name: "Department"}
     ]
 
     {
