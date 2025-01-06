@@ -71,6 +71,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                 <use href={~p"/images/sprite.svg#bi_chat-left-dots-fill"}></use>
               </svg>
               <img src={~p"/images/profile.png"} alt="photo of user" width="36" height="36" />
+              <p class="hidden lg:inline">Admirra John</p>
               <svg class={@svg_size}>
                 <use href={~p"/images/sprite.svg#arrow_down"}></use>
               </svg>
