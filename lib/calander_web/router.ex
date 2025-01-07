@@ -16,8 +16,8 @@ defmodule CalanderWeb.Router do
 
   scope "/", CalanderWeb do
     pipe_through :browser
-
-    get "/", PageController, :home
+    
+    get "/", RedirectController, :redirect_to_calendar
     live("/calendar", PageHtml.Calander)
     live("/dashboard", PageHtml.Dashboard)
   end

@@ -79,7 +79,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
           </div>
         </header>
         <div class="container mx-auto bg-white">
-          <h1 class="hidden pt-[20px] text-xl font-medium lg:block">Dashboard</h1>
+          <h1 class="hidden pt-[20px] text-xl font-medium py-[20px] lg:block">Dashboard</h1>
           <div class="lg:flex gap-[5px]">
             <div class="lg:w-[60%]">
               <section class="py-[20px]">
