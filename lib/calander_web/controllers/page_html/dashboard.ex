@@ -141,7 +141,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                         <div class="flex justify-between items-center">
                           <p class="text-gray-600 text-sm"><%= card.date_time %></p>
                           <div class="flex gap-[6px]">
-                            <svg class={"w-[24px] h-[24px] fill-[#{card.svg_color}]"}>
+                            <svg class={"w-[24px] h-[24px] text-#{card.svg_color}"}>
                               <use href={~p"/images/sprite.svg#bi_pin-angle-fill"}></use>
                             </svg>
                             <svg class="w-[24px] h-[24px]">
@@ -293,17 +293,17 @@ defmodule CalanderWeb.PageHtml.Dashboard do
       %{
         title: "Outing schedule for every department",
         date_time: "5 minutes ago",
-        svg_color: "#686868"
+        svg_color: "customGray-dark"
       },
       %{
         title: "Meeting HR Department",
         date_time: "Yesterday, 12:30 PM",
-        svg_color: "#B2B2B2"
+        svg_color: "customGray-light"
       },
       %{
         title: "IT Department need two more talents for UX/UI Designer position",
         date_time: "Yesterday, 09:15 AM",
-        svg_color: "#B2B2B2"
+        svg_color: "customGray-light"
       }
     ]
 

@@ -18,7 +18,12 @@ module.exports = {
         brand: "#FD4F00",
         blueHeader: "#161E54",
         blueBody: "#1B204A",
-        buttonRed: "#FF5151"
+        buttonRed: "#FF5151",
+        customGray: {
+          dark: "#686868",
+          light: "#B2B2B2"
+        }
+   
       },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"], // 
