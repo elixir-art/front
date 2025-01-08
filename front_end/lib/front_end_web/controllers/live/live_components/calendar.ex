@@ -18,34 +18,37 @@ defmodule FrontEndWeb.CalendarComponent do
   @months ~w"January February March April May June July August September October November December"
   def render(assigns) do
     ~H"""
-    <div class="dark:bg-coal rounded-lg shadow-lg p-[72px] max-w-md mx-auto text-2xl font-medium">
-      <div class="flex justify-between items-center mb-[56px] text-primary dark:text-white">
+    <div class="dark:bg-coal rounded-lg shadow-lg p-18 text-2xl font-medium">
+      <div class="flex justify-between items-center mb-14 text-primary dark:text-white">
         <div class="font-bold">
           <span>{@current_month} {@initial_date.year}</span>
         </div>
-        <div class="flex flex-row">
-          <Heroicons.icon
-            name="chevron-left"
-            type="outline"
-            class="size-5 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-full"
-            phx-click="prev_month"
-            phx-target={@myself}
-          />
-          <Heroicons.icon
-            name="chevron-right"
-            type="outline"
-            class="size-5 hover:bg-gray-300 dark:hover:bg-gray-500 rounded-full"
-            phx-click="next_month"
-            phx-target={@myself}
-          />
+        <div class="flex flex-row space-between-8">
+          <div class="size-8 justify-items-center rounded-full hover:bg-gray-300 dark:hover:bg-gray-500">
+            <Heroicons.icon
+              name="chevron-left"
+              type="outline"
+              class="size-5 m-auto mt-1"
+              phx-click="prev_month"
+              phx-target={@myself}
+            />
+          </div>
+          <div class="justify-items-center size-8 rounded-full hover:bg-gray-300 dark:hover:bg-gray-500">
+            <Heroicons.icon
+              name="chevron-right"
+              type="outline"
+              class="size-5 m-auto mt-1"
+              phx-click="next_month"
+              phx-target={@myself}
+            />
+          </div>
         </div>
       </div>
-      <div>
-        <table class="table-auto table-fixed w-full font-regular">
+        <table class="select-none font-regular">
           <tr>
             <th
               :for={week_day <- ~w"Mo Tu We Th Fr Sa Su"}
-              class="px-2 py-2 text-center text-gray-600 dark:text-white"
+              class="size-14 text-center text-gray-600 dark:text-white"
             >
               {week_day}
             </th>
@@ -53,13 +56,15 @@ defmodule FrontEndWeb.CalendarComponent do
           <tr :for={week <- 0..(@weeks - 1)}>
             <td
               :for={day <- @calendar |> Enum.at(week)}
-              class={"w-12 h-12 text-center align-middle " <>
-          (if day == @selected, do: "bg-selected dark:bg-selected-dark text-white rounded-full", else: "text-secondary dark:text-secondary-dark hover:bg-gray-300 dark:hover:bg-gray-600")}
+              class={"size-14 text-center align-middle " <>
+          (if day == @selected, do: day_class(day, :selected), else: day_class(day, "none"))}
               phx-click="select"
               phx-target={@myself}
               phx-value-day={day}
             >
-              {day}
+              <div class="size-7 m-auto mb-1">
+                {day}
+              </div>
             </td>
           </tr>
           <tr :if={@weeks < 6} class="h-10">
@@ -69,9 +74,8 @@ defmodule FrontEndWeb.CalendarComponent do
             <td colspan="7"></td>
           </tr>
         </table>
-      </div>
-      <div div class="mt-4 dark:text-white">
-        <ul class="space-y-2">
+      <div :if={@errands != []} div class="mt-4 dark:text-white border-t-2">
+        <ul class="pt-4 space-y-2">
           <li :for={errand <- @errands} class="flex flex-col">
             <span class="text-sm text-slate-500">
               {Calendar.strftime(errand.to_do_at, "%I:%M %p")}
@@ -159,4 +163,10 @@ defmodule FrontEndWeb.CalendarComponent do
     next_month = date |> Date.add(Date.days_in_month(date) - date.day + 1)
     Date.beginning_of_month(next_month)
   end
+
+  defp day_class("", _), do: ""
+  defp day_class(_day, :selected), do: "bg-selected dark:bg-selected-dark text-white rounded-full"
+  defp day_class(_day, _), do: "rounded-full text-secondary dark:text-secondary-dark hover:bg-gray-300 dark:hover:bg-gray-600"
+
+
 end

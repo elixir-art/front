@@ -114,4 +114,13 @@ if config_env() == :prod do
   #     config :swoosh, :api_client, Swoosh.ApiClient.Hackney
   #
   # See https://hexdocs.pm/swoosh/Swoosh.html#module-installation for details.
+
+
+config :iconify_ex, :mode, :css
+config :iconify_ex, :env, config_env()
+
+config :iconify_ex, :fallback_icon, "heroicons-solid:question-mark-circle" # Default icon for missing ones
+config :iconify_ex, :generated_icon_static_path, "./priv/static/images/icons" # Directory for generated CSS and assets
+config :iconify_ex, :generated_icon_static_url, "/images/icons/" # URL for serving generated assets
+
 end

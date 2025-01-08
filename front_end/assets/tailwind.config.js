@@ -7,21 +7,73 @@ const path = require("path")
 
 module.exports = {
   darkMode: 'selector',
+  variants: {
+    extend: {
+      maskImage: ['hover', 'focus'],
+    },
+  },
   content: [
     "./js/**/*.js",
     "../lib/front_end_web.ex",
     "../lib/front_end_web/**/*.*ex"
   ],
+  safelist: [
+    {
+      pattern: /bg-(orange|blue|pink)-100/,
+    },
+    {
+      pattern: /text-(orange|blue|pink)-800/,
+    }
+  ],
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"],
+        roboto: ["Roboto", "sans-serif"], 
+        rubik: ["Rubik", "sans-serif"]  
+      },
+      fontSize: {
+        xxxs: '5px',
+        xxs: '10px',
+        myxl: ['42px','28px']
+      },
       colors: {
+        'gray': {
+          50: "#EFEFEF",
+          100: "#FAFAFA",
+          300: "#B2B2B2",
+          400: "#E0E0E0",
+          500: "#686868",
+          800: "#303030"
+        },
+        'orange': {
+          100: "#FFEFE7",
+          800: "#FF5151"
+        },
+        'blue': {
+          100: "#E8F0FB",
+          800: "#3786F1"
+        },
+        'pink': {
+          100: "#FDEBF9",
+          800: "#EE61CF"
+        },
+        'jean': {
+          400: "#1B204A",
+          500: "#161E54"
+        },
         'coal': "#1E1F25",
         'primary': "#333333",
         'secondary': "#666666",
         'secondary-dark':"#CCCCCC",
         'selected': "#FB3F4A",
-        'selected-dark':"#589C5F"
-      }
+        'selected-dark':"#589C5F",
+        'percent-fill': "#FFEFE7"
+      },
+      spacing: {
+        '18': '72px'
+      },
+      maskImage: ['responsive'],
     },
   },
   plugins: [

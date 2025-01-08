@@ -1,0 +1,40 @@
+<h1 class="text-xl font-md font-poppins my-2.5 py-2.5">Dashboard</h1>
+<div class="grid gap-6 sm:grid-cols-1 font-poppins">
+  <.color_bubble :for={card <- @bubble_cards} card={card} />
+  <.graph_bubble :for={card <- @graph_cards} card={card} />
+  <.list_bubble title="Announcements" time="Today, 13 Sep 2021" bottom_text="See All Announcemens">
+    <.gray_bubble :for={card <- @announcement_cards} card={card}>
+      <div class="flex space-x-2.5">
+        <.iconify icon="fluent-mdl2:pinned-solid" class={"size-5 text-gray-#{if card.pinned, do: 500, else: 300}"} />
+        <.iconify icon="tabler:dots" class="size-5 text-gray-300" />
+      </div>
+    </.gray_bubble>
+  </.list_bubble>
+  <div class="rounded-lg overflow-hidden">
+    <div class="bg-jean-400">
+      <h3 class="text-white text-base font-poppins py-4 ml-5 mr-2.5">Recent Activity</h3>
+    </div>
+    <div class="flex-cols justify-items-start bg-jean-500 text-white pl-5 pb-[31px] pr-[42px]">
+      <p class="font-roboto text-xxs opacity-60 pt-3">10.40 AM, Fri 10 Sept 2021</p>
+      <p class="text-sm py-[7px]">You Posted a New Job</p>
+      <p class="text-sm opacity-80 mb-7">Kindly check the requirements and terms of work and make sure everything is
+        right.</p>
+      <p class="text-sm font-roboto mb-7">Today you made 12 Activities</p>
+      <button class="bg-orange-800 rounded-md font-poppins font-medium text-sm py-2.5 px-4">All Activities</button>
+    </div>
+  </div>
+  <.list_bubble title="Upcoming Schedule" time="Today, 13 Sep 2021" bottom_text="Create a New Schedule">
+    <div class="space-y-2">
+      <p class="text-gray-500 text-xs font-poppins">Priority</p>
+      <.gray_bubble :for={card <- @schedule_cards.priority} card={card}>
+        <.iconify icon="tabler:dots" class="size-5 text-gray-300" />
+      </.gray_bubble>
+    </div>
+    <div class="space-y-2">
+      <p class="text-gray-500 text-xs font-poppins">Other</p>
+      <.gray_bubble :for={card <- @schedule_cards.other} card={card}>
+        <.iconify icon="tabler:dots" class="size-5 text-gray-300" />
+      </.gray_bubble>
+    </div>
+  </.list_bubble>
+</div>

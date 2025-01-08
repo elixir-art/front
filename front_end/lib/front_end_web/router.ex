@@ -20,6 +20,7 @@ defmodule FrontEndWeb.Router do
     get "/", PageController, :home
     live("/icon", IconLive)
     live("/calendar", CalendarLive)
+    live("/dashboard", DashboardLive)
   end
 
   # Other scopes may use custom stacks.
