@@ -3,40 +3,40 @@ defmodule CalanderWeb.PageHtml.Dashboard do
 
   def render(assigns) do
     ~H"""
-    <div class="md:grid md:grid-cols-[100px_1fr] lg:grid-cols-[200px_1fr]">
+    <div class="md:grid md:grid-cols-[100px_1fr] xl:grid-cols-[200px_1fr]">
       <div class="hidden md:block">
         <div class="flex items-center justify-center mb-[20px]">
           <h2 class="pt-[40px] px-[10px] font-semibold text-2xl">WeHR</h2>
         </div>
         <div>
-          <div class="flex items-center justify-center mb-[10px] lg:justify-start lg:pl-[30px]">
+          <div class="flex items-center justify-center mb-[10px] xl:justify-start xl:pl-[30px]">
             <p class="text-gray-400 text-xs pb-2">MAIN MENU</p>
           </div>
-          <div class="flex flex-col gap-[30px] mb-[30px] md:justify-center md:items-center lg:items-start lg:pl-[30px]">
+          <div class="flex flex-col gap-[30px] mb-[30px] md:justify-center md:items-center xl:items-start xl:pl-[30px]">
             <%= for svg <- @svg_icons_sidebar do %>
               <div class="flex gap-[15px]">
                 <svg class={@svg_size}>
                   <use href={~p"/images/sprite.svg##{svg.svg_name}"}></use>
                 </svg>
-                <p class="hidden lg:inline"><%= svg.name %></p>
+                <p class="hidden xl:inline"><%= svg.name %></p>
               </div>
             <% end %>
           </div>
-          <div class="flex items-center justify-center mb-[10px] lg:justify-start lg:pl-[30px]">
+          <div class="flex items-center justify-center mb-[10px] xl:justify-start xl:pl-[30px]">
             <p class="text-gray-400 text-xs pb-2">OTHER</p>
           </div>
-          <div class="flex flex-col justify-center items-center gap-[30px] lg:items-start lg:pl-[30px]">
+          <div class="flex flex-col justify-center items-center gap-[30px] xl:items-start xl:pl-[30px]">
             <div class="flex gap-[15px]">
               <svg class={@svg_size}>
                 <use href={~p"/images/sprite.svg#ic_support"}></use>
               </svg>
-              <p class="hidden lg:inline">Support</p>
+              <p class="hidden xl:inline">Support</p>
             </div>
             <div class="flex gap-[15px]">
               <svg class={@svg_size}>
                 <use href={~p"/images/sprite.svg#ic_settings"}></use>
               </svg>
-              <p class="hidden lg:inline">Settings</p>
+              <p class="hidden xl:inline">Settings</p>
             </div>
           </div>
         </div>
@@ -45,7 +45,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
         <header class="py-[10px]  border-b-2 border-gray-100">
           <div class="container mx-auto bg-white flex items-center justify-between md:max-w-full md:pl-[10px]">
             <div class={@flex_header}>
-              <svg class={@svg_size}>
+              <svg class={"#{@svg_size} xl:hidden"}>
                 <use href={~p"/images/sprite.svg#ic_burgermenu"}></use>
               </svg>
               <div class="md:hidden">
@@ -71,7 +71,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                 <use href={~p"/images/sprite.svg#bi_chat-left-dots-fill"}></use>
               </svg>
               <img src={~p"/images/profile.png"} alt="photo of user" width="36" height="36" />
-              <p class="hidden lg:inline">Admirra John</p>
+              <p class="hidden xl:inline">Admirra John</p>
               <svg class={@svg_size}>
                 <use href={~p"/images/sprite.svg#arrow_down"}></use>
               </svg>
@@ -79,21 +79,21 @@ defmodule CalanderWeb.PageHtml.Dashboard do
           </div>
         </header>
         <div class="container mx-auto bg-white">
-          <h1 class="hidden pt-[20px] text-xl font-medium py-[20px] lg:block">Dashboard</h1>
-          <div class="lg:flex gap-[5px]">
-            <div class="lg:w-[60%]">
+          <h1 class="hidden pt-[20px] text-xl font-medium py-[20px] xl:block font-poppins">Dashboard</h1>
+          <div class="xl:flex gap-[5px]">
+            <div class="xl:w-[60%]">
               <section class="py-[20px]">
-                <h1 class="py-[10px] text-xl font-medium lg:hidden">Dashboard</h1>
+                <h1 class="py-[10px] text-xl font-medium xl:hidden">Dashboard</h1>
                 <ul class="flex flex-col gap-[20px] md:flex-row md:flex-wrap md:justify-center md:items-center">
                   <%= for card <- @first_cards do %>
-                    <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:w-[204px]" }>
+                    <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:w-[31%]" }>
                       <h2 class="font-medium text-lg"><%= card.title %></h2>
                       <p class="text-2xl"><%= card.number %></p>
                       <p class={"text-lg #{card.text_color}"}><%= card.description %></p>
                     </li>
                   <% end %>
                   <%= for card <- @second_cards do %>
-                    <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100 md:w-[312px] md:justify-center">
+                    <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100 md:w-[47%] md:justify-center">
                       <div>
                         <div class="mb-[32px]">
                           <h2 class="font-medium text-lg mb-[22px]"><%= card.title %></h2>
@@ -162,8 +162,8 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                 </button>
               </section>
             </div>
-            <div class="md:flex md:gap-[20px] lg:w-[40%] lg:flex-col">
-              <section class="py-[20px] md:w-[40%] lg:w-[100%]">
+            <div class="md:flex md:gap-[20px] xl:w-[40%] xl:flex-col">
+              <section class="py-[20px] md:w-[40%] xl:w-[100%]">
                 <div class="pl-[24px] pr-[48px] py-[24px] bg-blueHeader rounded-t-lg border-b-0">
                   <h2 class="font-medium text-lg text-white">Recently Activity</h2>
                 </div>
@@ -188,7 +188,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                   </div>
                 </div>
               </section>
-              <section class="py-[20px] md:w-[60%] md:h-[319px] lg:w-[100%]">
+              <section class="py-[20px] md:w-[60%] md:h-[319px] xl:w-[100%]">
                 <div class="pt-[20px] pb-[10px] px-[24px] rounded-t-xl border-2 border-gray-100">
                   <div class="flex justify-between items-center mb-[20px]">
                     <h2 class="font-medium text-lg">Upcoming Schedule</h2>
@@ -316,7 +316,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
       %{
         title: "Short meeting with product designer from IT Departement",
         date_time: "Today - 09.15 AM",
-        display: "md:hidden lg:block"
+        display: "md:hidden xl:block"
       }
     ]
 

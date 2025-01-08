@@ -19,13 +19,16 @@ module.exports = {
         blueHeader: "#161E54",
         blueBody: "#1B204A",
         buttonRed: "#FF5151"
-      }
+      },
+      fontFamily: {
+        poppins: ["Poppins", "sans-serif"], // 
+      },
     },
     screens: {
       sm: '640px',       // Default
       md: '860px',       // Custom breakpoint
-      lg: '1024px',      // Default
-      xl: '1280px',      // Default
+      lg: '1024',      // Custom (Default 1024)
+      xl: '1441px',      // (Default 1280)
       '2xl': '1536px',   // Default
     },
     container: {
