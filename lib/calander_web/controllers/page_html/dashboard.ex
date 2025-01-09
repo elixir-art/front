@@ -55,10 +55,10 @@ defmodule CalanderWeb.PageHtml.Dashboard do
               </div>
               <div class="hidden md:block md:relative">
                 <input
-                  class="w-[245px] h-[36px] border-b-2 border-gray-200 bg-gray-100 rounded-md"
+                  class="w-[245px] h-[36px] border-2 border-gray-200 bg-gray-50 rounded-md p-[15px]"
                   placeholder="Search"
                 />
-                <svg class={"absolute top-0 right-0 #{@svg_size}"}>
+                <svg class={"absolute top-[6px] right-[15px] #{@svg_size}"}>
                   <use href={~p"/images/sprite.svg#search"}></use>
                 </svg>
               </div>
