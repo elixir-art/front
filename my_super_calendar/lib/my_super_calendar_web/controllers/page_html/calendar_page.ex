@@ -2,10 +2,13 @@ defmodule MySuperCalendarWeb.CalendarPage do
   use MySuperCalendarWeb, :live_view
 
   def mount(_params, _session, socket) do
+    first_day_of_month = :calendar.day_of_the_week(2024, 12, 1)
+
     {:ok,
      socket
      |> assign(days_in_month: Enum.to_list(1..31))
-     |> assign(week_days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"])}
+     |> assign(week_days: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"])
+     |> assign(first_day_of_month: first_day_of_month)}
   end
 
   def render(assigns) do
@@ -21,36 +24,36 @@ defmodule MySuperCalendarWeb.CalendarPage do
     </div>
 
     <div class="w-[560px] h-[560px] rounded-xl fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%] p-[72px] bg-white dark:bg-gray-900">
-      <div class="flex justify-between items-center mb-[52px]">
-        <p class="font-bold text-black dark:text-white">December 2024</p>
-        <div class="flex gap-[5px]">
-          <button type="button" class="p-[5px] text-black dark:text-white"><%= "<" %></button>
-          <button type="button" class="p-[5px] text-black dark:text-white"><%= ">" %></button>
+      <div class="flex justify-between items-center mb-[52px] mb-4">
+        <p class="text-xl font-bold text-black dark:text-white">December 2024</p>
+        <div class="flex gap-[3px]">
+          <button type="button" class="text-xl p-[8px] text-black dark:text-white"><%= "<" %></button>
+          <button type="button" class="text-xl p-[8px] text-black dark:text-white"><%= ">" %></button>
         </div>
       </div>
       <ul class="flex gap-[3px]">
         <%= for week_day <- @week_days do %>
-          <li class="flex justify-center items-center w-[55px] h-[55px] text-lg text-black dark:text-white">
+          <li class="text-xl flex justify-center items-center w-[56px] h-[56px] text-lg text-black dark:text-white">
             <%= week_day %>
           </li>
         <% end %>
       </ul>
+
       <ul class="flex flex-wrap gap-[3px]">
-        <%= for {month_day, index} <- Enum.with_index(@days_in_month) do %>
-          <%= if index == 0 do %>
-            <li class="flex justify-center items-center ml-[180px] w-[56px] h-[56px] text-gray-500 dark:text-gray-400">
+        <%= for _ <- 1..(@first_day_of_month - 1) do %>
+          <li class="text-xl flex justify-center items-center w-[56px] h-[56px] text-lg text-black dark:text-white">
+          </li>
+        <% end %>
+
+        <%= for {month_day, _index} <- Enum.with_index(@days_in_month) do %>
+          <%= if month_day == 18 do %>
+            <li class="text-xl flex justify-center items-center w-[56px] h-[56px] rounded-full bg-[#e83b27] dark:bg-lime-600 text-white">
               <%= month_day %>
             </li>
           <% else %>
-            <%= if month_day == 18 do %>
-              <li class="flex justify-center items-center w-[56px] h-[56px] rounded-full bg-[#e83b27] dark:bg-lime-600 text-white">
-                <%= month_day %>
-              </li>
-            <% else %>
-              <li class="flex justify-center items-center w-[56px] h-[56px] text-gray-500 dark:text-gray-400">
-                <%= month_day %>
-              </li>
-            <% end %>
+            <li class="text-xl flex justify-center items-center w-[56px] h-[56px] text-lg text-black dark:text-white">
+              <%= month_day %>
+            </li>
           <% end %>
         <% end %>
       </ul>

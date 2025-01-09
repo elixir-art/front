@@ -15,7 +15,26 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: "#FD4F00",
+        'dark-blue': '#121843',
+        'light-blue': '#e8f0fb',
+        'blue': '#3786f1',
+        'red': '#ff5151',
+        'light-red': '#ffefe7',
+        'magenta': '#ee61cf',
+        'light-magenta': '#fdebf9',
+        'gray': {
+          100: '#f7fafc',
+          200: '#F1F1F1',
+          300: '#E0E0E0',
+          400: '#EFEFEF',
+          500: '#686868',
+          600: '#303030',
+          700: '#FAFAFA',
+        },
+      },
+      fontFamily: {
+        sans: ['Poppins', 'sans-serif'],
+        serif: ['Merriweather', 'serif'],
       }
     },
   },
