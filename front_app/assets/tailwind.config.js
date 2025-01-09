@@ -24,6 +24,11 @@ module.exports = {
         third_purple: "rgb(var(--color-third-purple))",
         light_purple: "rgb(var(--color-light-purple))",
         additional_purple: "rgb(var(--color-additional-purple))",
+        menu_primary: "rgb(var(--color-menu-primary))",
+        menu_text_secondary: "rgb(var(--color-menu-text-secondary))",
+        red: "rgb(var(--color-red))",
+        dashboard_background: "rgb(var(--color-dashboard-background))",
+        pink: "rgb(var(--color-pink))",
       }
     },
   },
