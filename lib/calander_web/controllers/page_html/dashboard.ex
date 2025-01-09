@@ -4,7 +4,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
   def render(assigns) do
     ~H"""
     <div class="md:grid md:grid-cols-[100px_1fr] xl:grid-cols-[200px_1fr]">
-      <div class="hidden md:block">
+      <div class="hidden bg-gray-50 md:block">
         <div class="flex items-center justify-center mb-[20px]">
           <h2 class="pt-[40px] px-[10px] font-semibold text-2xl">WeHR</h2>
         </div>
