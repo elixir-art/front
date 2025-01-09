@@ -19,6 +19,7 @@ defmodule MyCalendarWeb.Router do
 
     get "/", PageController, :home
     live "/calendar", CalendarLive
+    live "/dashboard", Dashboard
   end
 
   # Other scopes may use custom stacks.
