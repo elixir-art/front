@@ -84,16 +84,18 @@ defmodule CalanderWeb.PageHtml.Dashboard do
             <div class="xl:w-[60%]">
               <section class="py-[20px]">
                 <h1 class="py-[10px] text-xl font-medium xl:hidden">Dashboard</h1>
-                <ul class="flex flex-col gap-[20px] md:flex-row md:flex-wrap md:justify-center md:items-center">
+                <ul class="flex flex-col gap-[20px] md:flex-row md:justify-center md:items-center mb-[20px]">
                   <%= for card <- @first_cards do %>
-                    <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:w-[31%]" }>
+                    <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:basis-2/6" }>
                       <h2 class="font-medium text-lg"><%= card.title %></h2>
                       <p class="text-2xl"><%= card.number %></p>
                       <p class={"text-lg #{card.text_color}"}><%= card.description %></p>
                     </li>
                   <% end %>
-                  <%= for card <- @second_cards do %>
-                    <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100 md:w-[47%] md:justify-center">
+                </ul>
+                <ul class="flex flex-col gap-[20px] md:flex-row md:justify-center md:items-center">
+                <%= for card <- @second_cards do %>
+                    <li class="rounded-xl p-6 flex items-center justify-between border-2 border-gray-100 md:basis-1/2 md:justify-center">
                       <div>
                         <div class="mb-[32px]">
                           <h2 class="font-medium text-lg mb-[22px]"><%= card.title %></h2>
