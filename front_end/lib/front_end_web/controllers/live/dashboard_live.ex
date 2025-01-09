@@ -33,7 +33,8 @@ defmodule FrontEndWeb.DashboardLive do
         %{
           title: "Short meeting with product designer from IT Departement",
           time: "Today - 09.15 AM"
-        }
+        },
+        %{title: "Sort Front-end developer candidates", time: "Today - 11.30 AM"}
       ]
     }
 
