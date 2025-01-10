@@ -14,6 +14,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+      },
       colors: {
         brand: "rgb(var(--color-brand))",
         primary: "rgb(var(--color-primary))",
@@ -28,7 +31,13 @@ module.exports = {
         menu_text_secondary: "rgb(var(--color-menu-text-secondary))",
         red: "rgb(var(--color-red))",
         dashboard_background: "rgb(var(--color-dashboard-background))",
-        pink: "rgb(var(--color-pink))",
+        pink: "rgba(var(--color-pink))",
+        blue: "rgba(var(--color-blue))",
+        purple: "rgba(var(--color-purple))",
+        coral: "rgba(var(--color-coral))",
+        dark_blue: "rgba(var(--color-dark-blue))",
+        text_blue: "rgba(var(--color-text-blue))",
+        text_purple: "rgba(var(--color-text-purple))",
       }
     },
   },
