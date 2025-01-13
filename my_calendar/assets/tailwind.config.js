@@ -19,7 +19,6 @@ module.exports = {
         heading: ["Open Sans", "sans-serif"], 
       },
       fontSize: {
-
         '100': '18px',
         'xl': '32px',
         '2xl': '42px', 
@@ -30,16 +29,18 @@ module.exports = {
           blue: "#E8F0FB",
           peach: "#FFEFE7",
           gray: "#B2B2B2",
+          gray2: "#686868",
+          gray3: "#F1F1F1",
           violet1: "#1B204A",
           violet2: "#161E54"
         },
+        active: "#FF5151",
         grayInput: '#B3B3B3',
         accent_text: "#D97706",
         accent_blue: "#3786F1",
         accent_rose: "#FF5151",
         accent_pink: "#EE61CF",
         mainColor: '#FF5151',
-        orange: "#FF5151",
         coldBlack: "black",
         customGray: "gray"
       },
