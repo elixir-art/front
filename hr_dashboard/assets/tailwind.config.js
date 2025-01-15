@@ -13,6 +13,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        ph: '300px',  
+        tab: '768px',  
+        lap: '1024px', 
+      },
       colors: {
         brand: "#FD4F00",
         deftext: "#161E54",
