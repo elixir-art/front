@@ -1,0 +1,109 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+.frame-106 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 20px;
+  width: 390px;
+  height: 59px;
+  background: #ffffff;
+}
+
+.frame-104 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 17px;
+  margin: 0 auto;
+  width: 67px;
+  height: 24px;
+}
+
+.ic-burgermenu {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+}
+
+.frame-9 {
+  margin: 0 auto;
+  width: 24px;
+  height: 24px;
+}
+
+.union {
+  position: absolute;
+  width: 12.8px;
+  height: 16px;
+  left: 2px;
+  top: 11px;
+  background: #b2b2b2;
+  transform: rotate(-43.68deg);
+}
+
+.ellipse-1 {
+  position: absolute;
+  width: 12.8px;
+  height: 12.8px;
+  left: 2px;
+  top: 11px;
+  border: 2px solid #000000;
+  transform: rotate(-43.68deg);
+}
+
+.frame-105 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  width: 146px;
+  height: 42px;
+}
+
+.ic-round-notifications {
+  width: 24px;
+  height: 24px;
+}
+
+.frame-12 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 66px;
+  height: 42px;
+}
+
+.mask-group {
+  width: 36px;
+  height: 36px;
+}
+
+.ellipse-2 {
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  background: #c4c4c4;
+}
+
+.unsplash {
+  position: absolute;
+  width: 45.36px;
+  height: 67.68px;
+  left: -5.04px;
+  top: -1.32px;
+  background: url(.jpg);
+}
+
+img {
+  fill: currentColor;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}

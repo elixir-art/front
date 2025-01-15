@@ -1,0 +1,73 @@
+<div class="bg-white dark:bg-gray-800 w-[560px] rounded-lg border border-gray-200 dark:border-gray-700 p-[72px]">
+    <div class="flex items-center w-[416px] justify-between text-black dark:text-white">
+      <div class="flex justify-between h-[29px] items-center w-full mb-[56px] dark:text-white">
+        <h2 class="text-2xl  font-bold text-black dark:text-white">
+          {@current_month} {@current_year}
+        </h2>
+        <div class="flex space-x-4">
+          <button
+            id="theme-toggle"
+            class="p-1 bg-brand border border-gray-200 text-white rounded-full"
+          >
+            <span id="sun-icon" class="text-2xl dark:hidden">☀️</span>
+            <span id="moon-icon" class="text-2xl hidden dark:block">🌙</span>
+          </button>
+          <button phx-click="prev_month" class="hover:text-gray-400 text-black dark:text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 19.5 8.25 12l7.5-7.5"
+              />
+            </svg>
+          </button>
+          <button phx-click="next_month" class="hover:text-gray-400 text-black dark:text-white">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-7 text-center h-14 text-black dark:text-white font-semibold text-2xl">
+      <div>Mo</div>
+      <div>Tu</div>
+      <div>We</div>
+      <div>Th</div>
+      <div>Fr</div>
+      <div>Sa</div>
+      <div>Su</div>
+    </div>
+
+    <div class="grid grid-cols-7">
+      <%= for day <- @days do %>
+        <div
+          phx-click="select_day"
+          phx-value-day={day[:date]}
+          class={[
+            "flex justify-center items-center h-14 w-14 rounded-full cursor-pointer text-gray-500 dark:text-text_color font-semibold text-2xl",
+            (day[:date] == @selected_date.day and day[:current_month] == @selected_date.month and
+               day[:current_year] == @selected_date.year &&
+               "bg-[#FB3F4A] text-white dark:bg-circle_color") || ""
+          ]}
+        >
+          {if day[:date], do: day[:date], else: ""}
+        </div>
+      <% end %>
+    </div>
+</div>
