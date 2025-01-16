@@ -1,9 +1,9 @@
-<div class="flex w-full">
-  <aside class="h-screen pt-5 collapse md:visible md:block bg-gray-100">
-    <header class=" mb-10 lg:mx-[67px] mx-3 font-poppins font-semibold lg:text-4xl">WeHR</header>
+<div class="flex">
+  <aside class="sticky pt-5 hidden md:visible md:block bg-gray-100">
+    <header class="text-center mb-10 lg:mx-[67px] mx-3 font-poppins font-semibold lg:text-4xl">WeHR</header>
     <nav
-      class="w-fit pl-[30px] [&>div]:flex [&>div]:space-x-6 [&>div]:size-fit [&>div]:py-2.5 md:[&_*]:not(span):visible [&_*_span]:hidden lg:[&_*_span]:visible lg:[&_*_span]:block">
-      <p class="w-full my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">MAIN MENU</p>
+      class="w-fit [&>div]:px-[30px] [&>div]:flex [&>div]:space-x-6 [&>div]:size-fit [&>div]:py-2.5 md:[&_*]:not(span):visible [&_*_span]:hidden lg:[&_*_span]:visible lg:[&_*_span]:block">
+      <p class="text-center lg:text-start lg:ml-[30px] my-2.5 overflow-shrink font-roboto font-medium lg:text-xs text-xxss text-gray-500">MAIN MENU</p>
       <div>
         <.iconify icon="bxs:dashboard" class="size-5 text-orange-800" /> <span class="text-orange-800">Dashboard</span>
       </div>
@@ -19,7 +19,7 @@
       <div>
         <.department_icon /><span>Department</span>
       </div>
-      <p class="w-fit mt-10 my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">OTHER</p>
+      <p class="lg:text-start lg:ml-[30px] text-center mt-10 my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">OTHER</p>
       <div>
         <.iconify icon="bx:support" class="size-5 text-gray-300" /> <span>Support</span>
       </div>
@@ -31,11 +31,11 @@
   <div class="w-full">
     <header>
       <div class="flex justify-between px-5 lg:px-[50px] py-2 lg:py-6 w-full border-b-[1px]">
-        <div class="flex items-center space-x-4">
-          <.iconify icon="codicon:three-bars" class="size-5 text-gray-300 lg:collapse" />
-          <div class="w-full px-4 py-2.5 rounded-md flex md:border-[1px]">
-            <input placeholder="Search" class="collapse md:visible md:block outline-none " />
-            <.magnify_icon class="text-gray-300 max-w-fit mt-1 size-4 lg:size-5 lg:mt-0" />
+        <div class="flex gap-4">
+          <.iconify icon="codicon:three-bars" class="size-5 self-center text-gray-300 lg:hidden" />
+          <div class="px-4 py-2.5 rounded-md flex md:border-[1px]">
+            <input placeholder="Search" class="hidden md:visible md:block outline-none " />
+            <.magnify_icon class="self-center text-gray-300 max-w-fit size-4 lg:size-5 lg:mt-0" />
           </div>
         </div>
         <div class="flex items-center space-x-3 ">
@@ -45,7 +45,7 @@
             <div class="size-9 lg:size-10 rounded-full bg-center bg-cover"
               style="background-image: url('images/profile_pic.png');"></div>
           </div>
-          <span class="font-poppins font-medium collapse lg:visible lg:block">Admirra John</span>
+          <span class="font-poppins font-medium hidden lg:visible lg:block">Admirra John</span>
           <.iconify icon="solar:alt-arrow-down-line-duotone" class="size-5 text-[#737898]" />
         </div>
       </div>
