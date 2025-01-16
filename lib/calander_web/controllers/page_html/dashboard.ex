@@ -177,7 +177,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                       Kindly check the requirements and terms of work and make sure everything is right.
                     </p>
                   </div>
-                  <div class="">
+                  <div class="xl:flex xl:gap-[15px] xl:items-center ">
                     <h4 class="text-lg text-white mb-[20px] md:text-sm">
                       Today you makes 12 Activity
                     </h4>
