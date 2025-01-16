@@ -1,9 +1,9 @@
 <div class="flex w-full">
   <aside class="h-screen pt-5 collapse md:visible md:block bg-gray-100">
-    <header class="mb-10 mx-[67px] font-poppins font-semibold lg:text-4xl">WeHR</header>
+    <header class=" mb-10 lg:mx-[67px] mx-3 font-poppins font-semibold lg:text-4xl">WeHR</header>
     <nav
-      class="w-fit pl-[30px] [&>div]:flex [&>div]:space-x-6 [&>div]:size-fit [&>div]:py-2.5 md:[&_*]:not(span):visible [&_*_span]:collapse lg:[&_*_span]:visible lg:[&_*_span]:block">
-      <p class="w-fit my-2.5 font-roboto font-medium text-xs text-gray-500">MAIN MENU</p>
+      class="w-fit pl-[30px] [&>div]:flex [&>div]:space-x-6 [&>div]:size-fit [&>div]:py-2.5 md:[&_*]:not(span):visible [&_*_span]:hidden lg:[&_*_span]:visible lg:[&_*_span]:block">
+      <p class="w-full my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">MAIN MENU</p>
       <div>
         <.iconify icon="bxs:dashboard" class="size-5 text-orange-800" /> <span class="text-orange-800">Dashboard</span>
       </div>
@@ -19,7 +19,7 @@
       <div>
         <.department_icon /><span>Department</span>
       </div>
-      <p class="w-fit mt-10 my-2.5 font-roboto font-medium text-xs text-gray-500">OTHER</p>
+      <p class="w-fit mt-10 my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">OTHER</p>
       <div>
         <.iconify icon="bx:support" class="size-5 text-gray-300" /> <span>Support</span>
       </div>
@@ -52,8 +52,8 @@
     </header>
     <div class="px-[50px]">
       <h1 class="text-xl font-md font-poppins my-2.5 py-2.5">Dashboard</h1>
-      <div class="grid gap-6 grid-cols-1 lg:grid-cols-2 lg:space-x-[30px] font-poppins">
-        <div class="flex flex-col gap-3.5">
+      <div class="grid gap-6 grid-cols-1 lg:grid-cols-5 lg:space-x-[30px] font-poppins">
+        <div class="lg:col-span-3 flex flex-col gap-3.5">
           <div class="grid grid-cols-1 md:grid-cols-3 justify-stretch gap-3.5">
             <.color_bubble :for={card <- @bubble_cards} card={card} />
           </div>
@@ -70,8 +70,8 @@
             </.gray_bubble>
           </.list_bubble>
         </div>
-        <div class="md:flex lg:flex-col gap-3.5">
-          <div class="rounded-lg overflow-hidden size-fit">
+        <div class="md:flex lg:col-span-2 lg:flex-col gap-3.5">
+          <div id="recent-activity" class="rounded-lg overflow-hidden size-fit">
             <div class="bg-jean-400">
               <h3 class="text-white text-base font-poppins py-4 ml-5 mr-2.5">Recent Activity</h3>
             </div>
