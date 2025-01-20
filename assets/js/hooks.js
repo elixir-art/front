@@ -8,29 +8,14 @@ Hooks.ThemeToggle = {
 };
 
 const AnimationHelper = {
-  hidePreviousBlock(params) {
-    if (params.current_section_id > 1) {
-      const section = document.getElementById(`section-${params.current_section_id - 1}`)
-      this.hideSection(section)
-    }
-  },
-  hideNextBlock(params) {
-    if (params.current_section_id < 4) {
-      const section = document.getElementById(`section-${params.current_section_id + 1}`)
-      this.hideSection(section)
-    }
-  },
-  hideSection(section) {
-    if (section) {
-      section.className = "hidden";
-    }
-  },
   getLoader(current_section_id) {
     return document.getElementById(`step-${current_section_id}`);
   },
+
   getSection(current_section_id) {
     return document.getElementById(`section-${current_section_id}`)
   },
+
   changeClassForLoader(loader, newClass) {
     if(loader) {
       loader.className = newClass
@@ -39,12 +24,33 @@ const AnimationHelper = {
       console.warn("Loader was not found")
     }
   },
+
   changeClassForSection(section, newClass) {
     if(section) {
       section.className = newClass;
     }
     else{
       console.warn("Section was not found")
+    }
+  },
+
+  hidePreviousBlock(params) {
+    if (params.current_section_id > 1) {
+      const section = document.getElementById(`section-${params.current_section_id - 1}`)
+      this.hideSection(section)
+    }
+  },
+
+  hideNextBlock(params) {
+    if (params.current_section_id < 4) {
+      const section = document.getElementById(`section-${params.current_section_id + 1}`)
+      this.hideSection(section)
+    }
+  },
+  
+  hideSection(section) {
+    if (section) {
+      section.className = "hidden";
     }
   }
 }
