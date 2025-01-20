@@ -28,6 +28,15 @@ module.exports = {
       fontFamily: {
         poppins: ["Poppins", "sans-serif"], // 
       },
+      keyframes: {
+        "step-animation": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
+        },
+      },
+      animation: {
+        step: "step-animation 1s",
+      },
     },
     screens: {
       sm: '640px',       // Default

@@ -16,10 +16,11 @@ defmodule CalanderWeb.Router do
 
   scope "/", CalanderWeb do
     pipe_through :browser
-    
+
     get "/", RedirectController, :redirect_to_calendar
     live("/calendar", PageHtml.Calander)
     live("/dashboard", PageHtml.Dashboard)
+    live("/form", PageHtml.Form)
   end
 
   # Other scopes may use custom stacks.
