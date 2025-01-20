@@ -30,6 +30,22 @@ const AnimationHelper = {
   },
   getSection(current_section_id) {
     return document.getElementById(`section-${current_section_id}`)
+  },
+  changeClassForLoader(loader, newClass) {
+    if(loader) {
+      loader.className = newClass
+    }
+    else {
+      console.warn("Loader was not found")
+    }
+  },
+  changeClassForSection(section, newClass) {
+    if(section) {
+      section.className = newClass;
+    }
+    else{
+      console.warn("Section was not found")
+    }
   }
 }
 
@@ -37,14 +53,10 @@ const StepForwardAnimation = {
   handleStepForwardAnimation(params) {
     const loader = AnimationHelper.getLoader(params.current_section_id);
     const section = AnimationHelper.getSection(params.current_section_id);
-
-    if (loader && section) {
-      loader.className = "absolute w-full h-full bg-blue-500 animate-step";
-      section.className = "visible";
-      AnimationHelper.hidePreviousBlock(params)
-    } else {
-      console.warn("Loader or section not found for step:", params);
-    }
+    AnimationHelper.changeClassForLoader(loader,"absolute w-full h-full bg-blue-500 animate-step");
+    AnimationHelper.changeClassForSection(section, "visible");
+    AnimationHelper.hidePreviousBlock(params)
+    
   }
 };
 
@@ -52,13 +64,9 @@ const StepBackWardAnimation = {
   handleStepBackwardAnimation(params) {
     const loader = AnimationHelper.getLoader(params.current_section_id + 1);
     const section = AnimationHelper.getSection(params.current_section_id);
-    if (loader && section) {
-      loader.className = "";
-      section.className = "visible";
-      AnimationHelper.hideNextBlock(params)
-    } else {
-      console.warn("Loader or section not found for step:", params);
-    }
+    AnimationHelper.changeClassForLoader(loader, "")
+    AnimationHelper.changeClassForSection(section, "visible")
+    AnimationHelper.hideNextBlock(params)
   }
 }
 
