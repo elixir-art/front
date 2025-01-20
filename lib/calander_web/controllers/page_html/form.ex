@@ -164,7 +164,7 @@ defmodule CalanderWeb.PageHtml.Form do
   end
 
   def handle_event("handle_step_forward_animation", _params, socket) do
-    current_section = socket.assigns.current_section + 1
+    current_section = get_validated_next_section(socket.assigns.current_section)
 
     {:noreply,
      push_event(
@@ -175,7 +175,7 @@ defmodule CalanderWeb.PageHtml.Form do
   end
 
   def handle_event("handle_step_backward_animation", _params, socket) do
-    current_section = socket.assigns.current_section - 1
+    current_section = get_validated_previous_section(socket.assigns.current_section)
 
     {:noreply,
      push_event(
@@ -188,5 +188,21 @@ defmodule CalanderWeb.PageHtml.Form do
   def handle_event("receive_param", params, socket) do
     IO.inspect(params)
     {:noreply, socket}
+  end
+
+  defp get_validated_next_section(current_section) do
+    if(current_section + 1 > 4) do
+      current_section
+    else
+      current_section + 1
+    end
+  end
+
+  defp get_validated_previous_section(current_section) do
+    if(current_section - 1 < 1) do
+      current_section
+    else
+      current_section - 1
+    end
   end
 end
