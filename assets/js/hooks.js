@@ -17,7 +17,7 @@ const AnimationHelper = {
   },
 
   changeClassForLoader(loader, newClass) {
-    if(loader) {
+    if (loader) {
       loader.className = newClass
     }
     else {
@@ -26,10 +26,10 @@ const AnimationHelper = {
   },
 
   changeClassForSection(section, newClass) {
-    if(section) {
+    if (section) {
       section.className = newClass;
     }
-    else{
+    else {
       console.warn("Section was not found")
     }
   },
@@ -47,7 +47,7 @@ const AnimationHelper = {
       this.hideSection(section)
     }
   },
-  
+
   hideSection(section) {
     if (section) {
       section.className = "hidden";
@@ -59,10 +59,10 @@ const StepForwardAnimation = {
   handleStepForwardAnimation(params) {
     const loader = AnimationHelper.getLoader(params.current_section_id);
     const section = AnimationHelper.getSection(params.current_section_id);
-    AnimationHelper.changeClassForLoader(loader,"absolute w-full h-full bg-blue-500 animate-step");
+    AnimationHelper.changeClassForLoader(loader, "absolute w-full h-full bg-blue-500 animate-step");
     AnimationHelper.changeClassForSection(section, "visible");
     AnimationHelper.hidePreviousBlock(params)
-    
+
   }
 };
 
@@ -83,6 +83,14 @@ Hooks.Form = {
     });
     this.handleEvent("handle_step_backward_animation", (params) => {
       StepBackWardAnimation.handleStepBackwardAnimation(params);
+    });
+
+    this.el.addEventListener("submit", (event) => {
+      event.preventDefault(); 
+      const formData = new FormData(this.el);
+      formData.forEach((value, key) => {
+        console.log(`Field ${key}: ${value}`);
+      });
     });
   }
 };

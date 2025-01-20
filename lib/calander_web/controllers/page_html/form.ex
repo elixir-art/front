@@ -7,7 +7,7 @@ defmodule CalanderWeb.PageHtml.Form do
       <button phx-click="handle_step_forward_animation">Next Step</button>
       <button phx-click="handle_step_backward_animation">Prev Step</button>
     </div>
-    <form id="first-section-form" phx-submit="save">
+    <form id="first-section-form" phx-hook="Form">
       <div class="bg-red-500 py-[32px] px-[46px] border-2 border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
@@ -38,6 +38,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   name="name"
                   class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
                   placeholder="John Carter"
+                  required
                 />
               </div>
               <div class="flex flex-col">
@@ -48,6 +49,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   name="email"
                   class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
                   placeholder="Email adress"
+                  required
                 />
               </div>
             </div>
@@ -60,6 +62,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   name="phone"
                   class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
                   placeholder="(123) 456 - 7890"
+                  required
                 />
               </div>
               <div class="flex flex-col">
@@ -70,6 +73,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   name="company"
                   class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
                   placeholder="Company name"
+                  required
                 />
               </div>
             </div>
@@ -82,7 +86,15 @@ defmodule CalanderWeb.PageHtml.Form do
           </div>
           <div class="flex flex-wrap gap-[15px]">
             <%= for second_section_blocks <- @second_section_blocks do %>
-              <div class="p-[20px] bg-green-300 w-[48%]"><%= second_section_blocks.text %></div>
+              <div  class="p-[20px] bg-green-300 w-[48%]">
+                <input
+                  type="checkbox"
+                  name="selected_services"
+                  id={"#{second_section_blocks.id}"}
+                  value={"#{second_section_blocks.text}"}
+                />
+                <label> <%=second_section_blocks.text%> </label>
+              </div>
             <% end %>
           </div>
         </section>
@@ -131,18 +143,22 @@ defmodule CalanderWeb.PageHtml.Form do
   def mount(_params, _session, socket) do
     second_section_blocks = [
       %{
+        id: "block-development",
         text: "Development",
         icon: ""
       },
       %{
+        id: "block-web-design",
         text: "Web Design",
         icon: ""
       },
       %{
+        id: "marketing",
         text: "Marketing",
         icon: ""
       },
       %{
+        id: "other",
         text: "Other",
         icon: ""
       }
