@@ -4,7 +4,8 @@ defmodule CalanderWeb.PageHtml.Form do
   def render(assigns) do
     ~H"""
     <div id="hook_test" phx-hook="Form">
-      <button phx-click="handle_step_animation">Test</button>
+      <button phx-click="handle_step_forward_animation">Next Step</button>
+      <button phx-click="handle_step_backward_animation">Prev Step</button>
     </div>
     <form id="first-section-form" phx-submit="save">
       <div class="bg-red-500 py-[32px] px-[46px] border-2 border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
@@ -16,13 +17,13 @@ defmodule CalanderWeb.PageHtml.Form do
               </li>
               <%= if section < 4 do %>
                 <span class="loader w-12 h-1 bg-gray-300 rounded overflow-hidden relative">
-                  <span id={"step-#{section}"}></span>
+                  <span id={"step-#{section + 1}"}></span>
                 </span>
               <% end %>
             <% end %>
           </ul>
         </div>
-        <secton class="hidden">
+        <secton id="section-1" class="">
           <div class="mb-[40px]">
             <h2 class="font-medium mb-[10px]">Contact details</h2>
             <p class="text-xs text-gray-300">Lorem ipsum dolor sit amet consectetur adipisc.</p>
@@ -74,7 +75,7 @@ defmodule CalanderWeb.PageHtml.Form do
             </div>
           </div>
         </secton>
-        <section class="hidden">
+        <section id="section-2" class="hidden">
           <div class="mb-[40px]">
             <h2 class="font-medium mb-[10px]">Our services</h2>
             <p class="text-xs text-gray-300">Please select which service you are interested in.</p>
@@ -85,7 +86,7 @@ defmodule CalanderWeb.PageHtml.Form do
             <% end %>
           </div>
         </section>
-        <section class="hidden">
+        <section id="section-3" class="hidden">
           <div class="mb-[40px]">
             <h2 class="font-medium mb-[10px]">What’s your project budget?</h2>
             <p class="text-xs text-gray-300">
@@ -109,7 +110,7 @@ defmodule CalanderWeb.PageHtml.Form do
             <% end %>
           </div>
         </section>
-        <section class="">
+        <section id="section-4" class="hidden">
           <div class="flex justify-center min-h-[268px]">
             <div class="flex flex-wrap flex-col items-center justify-center w-[70%]">
               <h2 class="font-medium mb-[10px]">Submit your quote request</h2>
@@ -150,7 +151,7 @@ defmodule CalanderWeb.PageHtml.Form do
     {:ok,
      socket
      |> assign(show_animation: false)
-     |> assign(current_step: 0)
+     |> assign(current_section: 1)
      |> assign(sections: [1, 2, 3, 4])
      |> assign(second_section_blocks: second_section_blocks)
      |> assign(
@@ -162,14 +163,25 @@ defmodule CalanderWeb.PageHtml.Form do
     {:noreply, push_event(socket, "test", %{test_parameter: "Hello World"})}
   end
 
-  def handle_event("handle_step_animation", _params, socket) do
-    current_step = socket.assigns.current_step + 1
+  def handle_event("handle_step_forward_animation", _params, socket) do
+    current_section = socket.assigns.current_section + 1
 
     {:noreply,
      push_event(
-       socket |> assign(current_step: current_step),
-       "handle_step_animation",
-       %{id: "step-#{current_step}"}
+       socket |> assign(current_section: current_section),
+       "handle_step_forward_animation",
+       %{current_section_id: current_section}
+     )}
+  end
+
+  def handle_event("handle_step_backward_animation", _params, socket) do
+    current_section = socket.assigns.current_section - 1
+
+    {:noreply,
+     push_event(
+       socket |> assign(current_section: current_section),
+       "handle_step_backward_animation",
+       %{current_section_id: current_section}
      )}
   end
 
