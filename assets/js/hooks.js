@@ -62,7 +62,6 @@ const StepForwardAnimation = {
     AnimationHelper.changeClassForLoader(loader, "absolute w-full h-full bg-blue-500 animate-step");
     AnimationHelper.changeClassForSection(section, "visible");
     AnimationHelper.hidePreviousBlock(params)
-
   }
 };
 

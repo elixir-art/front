@@ -7,7 +7,7 @@ defmodule CalanderWeb.PageHtml.Form do
       <button phx-click="handle_step_forward_animation">Next Step</button>
       <button phx-click="handle_step_backward_animation">Prev Step</button>
     </div>
-    <form id="first-section-form" phx-hook="Form">
+    <form id="form" phx-hook="Form">
       <div class="bg-red-500 py-[32px] px-[46px] border-2 border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
