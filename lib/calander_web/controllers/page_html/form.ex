@@ -4,8 +4,6 @@ defmodule CalanderWeb.PageHtml.Form do
   def render(assigns) do
     ~H"""
     <form id="form" phx-hook="Form">
-      <button type="button" phx-click="handle_step_forward_animation">Next Step</button>
-      <button type="button" phx-click="handle_step_backward_animation">Prev Step</button>
       <div class="py-[32px] px-[46px] shadow-2xl border border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
@@ -134,7 +132,9 @@ defmodule CalanderWeb.PageHtml.Form do
                     name="project-budget"
                     value={"#{third_section_block.text}"}
                   />
-                  <label class="ml-[7px]" for={"#{third_section_block.id}"}><%= third_section_block.text %></label>
+                  <label class="ml-[7px]" for={"#{third_section_block.id}"}>
+                    <%= third_section_block.text %>
+                  </label>
                 </div>
               </div>
             <% end %>
@@ -153,6 +153,10 @@ defmodule CalanderWeb.PageHtml.Form do
             </div>
           </div>
         </section>
+        <div class="mt-[20px] flex justify-between items-center">
+          <button class="rounded-full px-[40px] py-[15px] border-blue-700 border" type="button" phx-click="handle_step_backward_animation"><p class="text-blue-800 font-light"> Previous Step </p></button>
+          <button class="rounded-full px-[40px] py-[15px] bg-blue-700" type="button" phx-click="handle_step_forward_animation"><p class="text-white">Next Step</p></button>
+        </div>
       </div>
     </form>
     """
