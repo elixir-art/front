@@ -16,6 +16,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
+        roboto: ['Roboto', 'ui-sans-serif', 'system-ui'],
       },
       colors: {
         brand: "rgb(var(--color-brand))",
@@ -38,6 +39,10 @@ module.exports = {
         dark_blue: "rgba(var(--color-dark-blue))",
         text_blue: "rgba(var(--color-text-blue))",
         text_purple: "rgba(var(--color-text-purple))",
+        subtitle: "rgb(var(--color-subtitle))",
+        border: "rgb(var(--color-border))",
+        subtitle_secondary: "rgb(var(--color-subtitle-secondary))",
+        dark_blue_header: "rgb(var(--color-dark-blue-header))",
       }
     },
   },
