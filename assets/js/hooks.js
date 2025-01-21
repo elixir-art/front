@@ -203,13 +203,17 @@ Hooks.Form = {
       StepBackWardAnimation.handleStepBackwardAnimation(params);
       this.pushEvent("set_current_section", { current_section: params.current_section });
     });
-
+   
     this.el.addEventListener("submit", (event) => {
       event.preventDefault(); 
+
+      let formResult = ""
       const formData = new FormData(this.el);
       formData.forEach((value, key) => {
-        console.log(`Field ${key}: ${value}`);
+        formResult = formResult.concat(`Field ${key}: ${value}\n`)
       });
+
+      alert(formResult)
     });
   }
 };
