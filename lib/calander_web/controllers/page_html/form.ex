@@ -6,15 +6,18 @@ defmodule CalanderWeb.PageHtml.Form do
     <form id="form" phx-hook="Form">
       <button type="button" phx-click="handle_step_forward_animation">Next Step</button>
       <button type="button" phx-click="handle_step_backward_animation">Prev Step</button>
-      <div class="bg-red-500 py-[32px] px-[46px] border-2 border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
+      <div class="py-[32px] px-[46px] shadow-2xl border border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
             <%= for section <- @sections do %>
-              <li id={"li-#{section}"} class="flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-300 rounded-full text-lg">
+              <li
+                id={"li-#{section}"}
+                class="flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-100 rounded-full text-lg"
+              >
                 <div><%= section %></div>
               </li>
               <%= if section < 4 do %>
-                <span class="loader w-12 h-1 bg-gray-300 rounded overflow-hidden relative">
+                <span class="loader w-12 h-1 bg-gray-100 rounded overflow-hidden relative">
                   <span id={"step-#{section + 1}"}></span>
                 </span>
               <% end %>
@@ -23,8 +26,8 @@ defmodule CalanderWeb.PageHtml.Form do
         </div>
         <secton id="section-1" class="">
           <div class="mb-[40px]">
-            <h2 class="font-medium mb-[10px]">Contact details</h2>
-            <p class="text-xs text-gray-300">Lorem ipsum dolor sit amet consectetur adipisc.</p>
+            <h2 class="font-medium text-xl mb-[10px]">Contact details</h2>
+            <p class="text-base text-gray-300">Lorem ipsum dolor sit amet consectetur adipisc.</p>
           </div>
           <div class="flex flex-col gap-[20px]">
             <div class="flex basis1/2 gap-[20px]">
@@ -34,7 +37,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   type="text"
                   id="name"
                   name="name"
-                  class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
+                  class="form-input rounded-full py-[15px] shadow-md border-gray-300 border-2"
                   placeholder="John Carter"
                   required
                 />
@@ -45,7 +48,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   type="email"
                   id="email"
                   name="email"
-                  class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
+                  class="form-input rounded-full py-[15px] shadow-md border-gray-300 border-2"
                   placeholder="Email adress"
                   required
                 />
@@ -58,7 +61,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   type="tel"
                   id="phone"
                   name="phone"
-                  class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
+                  class="form-input rounded-full py-[15px] shadow-md border-gray-300 border-2"
                   placeholder="(123) 456 - 7890"
                   required
                 />
@@ -69,7 +72,7 @@ defmodule CalanderWeb.PageHtml.Form do
                   type="text"
                   id="company"
                   name="company"
-                  class="form-input rounded-full p-[15px] shadow-md border-gray-300 border-2"
+                  class="form-input rounded-full py-[15px] shadow-md border-gray-300 border-2"
                   placeholder="Company name"
                   required
                 />
@@ -79,27 +82,30 @@ defmodule CalanderWeb.PageHtml.Form do
         </secton>
         <section id="section-2" class="hidden">
           <div class="mb-[40px]">
-            <h2 class="font-medium mb-[10px]">Our services</h2>
-            <p class="text-xs text-gray-300">Please select which service you are interested in.</p>
+            <h2 class="font-medium text-xl mb-[10px]">Our services</h2>
+            <p class="text-base text-gray-300">Please select which service you are interested in.</p>
           </div>
           <div class="flex flex-wrap gap-[15px]">
             <%= for second_section_blocks <- @second_section_blocks do %>
-              <div class="p-[20px] bg-green-300 w-[48%]">
+              <div id={"block-#{second_section_blocks.id}"} class="p-[20px] bg-green-300 w-[48%] checkbox-container" phx-hook="CheckboxOutline">
                 <input
                   type="checkbox"
                   name="selected_services"
                   id={"#{second_section_blocks.id}"}
                   value={"#{second_section_blocks.text}"}
+                  class="checkbox-input hidden"
                 />
-                <label><%= second_section_blocks.text %></label>
+                <label for={"#{second_section_blocks.id}"}>
+                  <%= second_section_blocks.text %>
+                </label>
               </div>
             <% end %>
           </div>
         </section>
         <section id="section-3" class="hidden">
           <div class="mb-[40px]">
-            <h2 class="font-medium mb-[10px]">What’s your project budget?</h2>
-            <p class="text-xs text-gray-300">
+            <h2 class="font-medium mb-[10px] text-xl">What’s your project budget?</h2>
+            <p class="text-base text-gray-300">
               Please select the project budget range you have in mind.
             </p>
           </div>
@@ -123,9 +129,9 @@ defmodule CalanderWeb.PageHtml.Form do
         <section id="section-4" class="hidden">
           <div class="flex justify-center min-h-[268px]">
             <div class="flex flex-wrap flex-col items-center justify-center w-[70%]">
-              <h2 class="font-medium mb-[10px]">Submit your quote request</h2>
+              <h2 class="font-medium mb-[10px] text-xl">Submit your quote request</h2>
               <div class="mb-[15px]">
-                <p class="text-xs text-gray-300 text-center">
+                <p class="text-base text-gray-300 text-center">
                   Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours.
                 </p>
               </div>
@@ -187,9 +193,7 @@ defmodule CalanderWeb.PageHtml.Form do
      |> assign(current_section: 1)
      |> assign(sections: [1, 2, 3, 4])
      |> assign(second_section_blocks: second_section_blocks)
-     |> assign(
-       third_section_blocks: third_section_blocks
-     )}
+     |> assign(third_section_blocks: third_section_blocks)}
   end
 
   def handle_event("handle_step_forward_animation", _params, socket) do

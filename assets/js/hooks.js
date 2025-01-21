@@ -143,7 +143,7 @@ const StepBackWardAnimation = {
     const li = AnimationHelper.getLi(params.current_section);
     AnimationHelper.changeClassForLoader(loader, "")
     AnimationHelper.changeClassForSection(section, "visible")
-    AnimationHelper.changeClassForLi(li, "flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-300 rounded-full text-lg")
+    AnimationHelper.changeClassForLi(li, "flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-100 rounded-full text-lg")
     AnimationHelper.hideNextBlock(params)
    
   }
@@ -172,6 +172,20 @@ Hooks.Form = {
       formData.forEach((value, key) => {
         console.log(`Field ${key}: ${value}`);
       });
+    });
+  }
+};
+
+Hooks.CheckboxOutline = {
+  mounted() {
+    this.el.querySelector('input').addEventListener('change', (event) => {
+      const container = this.el;
+
+      if (event.target.checked) {
+        container.classList.add('border-4', 'border-blue-600'); // Add outline when checked
+      } else {
+        container.classList.remove('border-4', 'border-blue-600'); // Remove outline when unchecked
+      }
     });
   }
 };
