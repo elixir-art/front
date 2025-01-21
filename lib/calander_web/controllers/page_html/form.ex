@@ -29,7 +29,7 @@ defmodule CalanderWeb.PageHtml.Form do
           </div>
           <div class="flex flex-col gap-[20px]">
             <div class="flex basis1/2 gap-[20px]">
-              <div class="flex flex-col">
+              <div class="flex flex-col relative">
                 <label class="mb-[10px]" for="name">Name</label>
                 <input
                   type="text"
@@ -39,8 +39,11 @@ defmodule CalanderWeb.PageHtml.Form do
                   placeholder="John Carter"
                   required
                 />
+                <svg class={"absolute top-[50px] right-[15px] #{@svg_size}"}>
+                  <use href={~p"/images/form_sprite.svg#Name"}></use>
+                </svg>
               </div>
-              <div class="flex flex-col">
+              <div class="flex flex-col relative">
                 <label class="mb-[10px]" for="email">Email</label>
                 <input
                   type="email"
@@ -50,10 +53,13 @@ defmodule CalanderWeb.PageHtml.Form do
                   placeholder="Email adress"
                   required
                 />
+                <svg class={"absolute top-[50px] right-[15px] #{@svg_size}"}>
+                  <use href={~p"/images/form_sprite.svg#Email"}></use>
+                </svg>
               </div>
             </div>
             <div class="flex basis-1/2 gap-[20px]">
-              <div class="flex flex-col">
+              <div class="flex flex-col relative">
                 <label class="mb-[10px]" for="phone">Phone Number</label>
                 <input
                   type="tel"
@@ -63,8 +69,11 @@ defmodule CalanderWeb.PageHtml.Form do
                   placeholder="(123) 456 - 7890"
                   required
                 />
+                <svg class={"absolute top-[50px] right-[15px] #{@svg_size}"}>
+                  <use href={~p"/images/form_sprite.svg#Phone"}></use>
+                </svg>
               </div>
-              <div class="flex flex-col">
+              <div class="flex flex-col relative">
                 <label class="mb-[10px]" for="company">Company</label>
                 <input
                   type="text"
@@ -74,6 +83,9 @@ defmodule CalanderWeb.PageHtml.Form do
                   placeholder="Company name"
                   required
                 />
+                <svg class={"absolute top-[50px] right-[15px] #{@svg_size}"}>
+                  <use href={~p"/images/form_sprite.svg#Company"}></use>
+                </svg>
               </div>
             </div>
           </div>
@@ -225,7 +237,8 @@ defmodule CalanderWeb.PageHtml.Form do
      |> assign(current_section: 1)
      |> assign(sections: [1, 2, 3, 4])
      |> assign(second_section_blocks: second_section_blocks)
-     |> assign(third_section_blocks: third_section_blocks)}
+     |> assign(third_section_blocks: third_section_blocks)
+     |> assign(svg_size: "w-6 h-6")}
   end
 
   def handle_event("handle_step_forward_animation", _params, socket) do
