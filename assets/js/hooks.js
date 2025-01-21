@@ -176,7 +176,7 @@ Hooks.Form = {
   }
 };
 
-Hooks.CheckboxOutline = {
+Hooks.CheckBoxOutline = {
   mounted() {
     this.el.querySelector('input').addEventListener('change', (event) => {
       const container = this.el;
@@ -188,6 +188,22 @@ Hooks.CheckboxOutline = {
       }
     });
   }
+};
+
+
+
+Hooks.RadioBoxOutline = {
+  mounted() {
+      this.el.querySelector('input').addEventListener('change', (event) => {
+        
+      const allContainers = document.querySelectorAll('.radio-container');
+      allContainers.forEach((container) =>
+        container.classList.remove('border-blue-600', 'border-2')
+      );
+
+      this.el.classList.add('border-blue-600', 'border-2');
+    });
+  },
 };
 
 export default Hooks;

@@ -90,7 +90,7 @@ defmodule CalanderWeb.PageHtml.Form do
               <div
                 id={"block-#{second_section_blocks.id}"}
                 class="p-[20px] border border-gray-300 w-[48%] checkbox-container rounded-lg"
-                phx-hook="CheckboxOutline"
+                phx-hook="CheckBoxOutline"
               >
                 <div class="flex items-center gap-[15px]">
                   <input
@@ -122,16 +122,19 @@ defmodule CalanderWeb.PageHtml.Form do
           </div>
           <div class="flex flex-wrap gap-[10px]">
             <%= for third_section_block <- @third_section_blocks do %>
-              <div class="bg-green-300 w-[48%] py-[30px] px-[10px]">
+              <div
+                id={"block-#{third_section_block.id}"}
+                class="border border-gray-300 w-[48%] py-[30px] px-[10px] radio-container rounded-lg"
+                phx-hook="RadioBoxOutline"
+              >
                 <div class="ml-[30px]">
                   <input
                     type="radio"
                     id={"#{third_section_block.id}"}
-                    name="project-budjet"
+                    name="project-budget"
                     value={"#{third_section_block.text}"}
-                    }
                   />
-                  <label for={"#{third_section_block.text}"}><%= third_section_block.text %></label>
+                  <label for={"#{third_section_block.id}"}><%= third_section_block.text %></label>
                 </div>
               </div>
             <% end %>
