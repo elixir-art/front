@@ -72,6 +72,10 @@ const AnimationHelper = {
     return document.getElementById(`section-${current_section}`)
   },
 
+  getLi(current_section) {
+    return document.getElementById(`li-${current_section}`)
+  },
+
   changeClassForLoader(loader, newClass) {
     if (loader) {
       loader.className = newClass
@@ -87,6 +91,15 @@ const AnimationHelper = {
     }
     else {
       console.warn("Section was not found")
+    }
+  },
+
+  changeClassForLi(li, newClass) {
+    if(li) {
+      li.className = newClass
+    }
+    else {
+      console.warn("Li was not found")
     }
   },
 
@@ -115,8 +128,10 @@ const StepForwardAnimation = {
   handleStepForwardAnimation(params) {
     const loader = AnimationHelper.getLoader(params.current_section);
     const section = AnimationHelper.getSection(params.current_section);
+    const li = AnimationHelper.getLi(params.current_section - 1);
     AnimationHelper.changeClassForLoader(loader, "absolute w-full h-full bg-blue-500 animate-step");
     AnimationHelper.changeClassForSection(section, "visible");
+    AnimationHelper.changeClassForLi(li, "flex items-center justify-center text-gray-200 w-[30px] h-[30px] bg-blue-600 rounded-full text-lg")
     AnimationHelper.hidePreviousBlock(params)
   }
 };
@@ -125,8 +140,10 @@ const StepBackWardAnimation = {
   handleStepBackwardAnimation(params) {
     const loader = AnimationHelper.getLoader(params.current_section + 1);
     const section = AnimationHelper.getSection(params.current_section);
+    const li = AnimationHelper.getLi(params.current_section);
     AnimationHelper.changeClassForLoader(loader, "")
     AnimationHelper.changeClassForSection(section, "visible")
+    AnimationHelper.changeClassForLi(li, "flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-300 rounded-full text-lg")
     AnimationHelper.hideNextBlock(params)
    
   }
@@ -142,6 +159,7 @@ Hooks.Form = {
       StepForwardAnimation.handleStepForwardAnimation(params);
       this.pushEvent("set_current_section", { current_section: params.current_section });
     });
+    
     this.handleEvent("handle_step_backward_animation", (params) => {
       params.current_section = Validator.getValidatedDecrmentedPage(params.current_section)
       StepBackWardAnimation.handleStepBackwardAnimation(params);

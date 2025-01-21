@@ -10,7 +10,7 @@ defmodule CalanderWeb.PageHtml.Form do
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
             <%= for section <- @sections do %>
-              <li class="flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-200 rounded-full text-lg">
+              <li id={"li-#{section}"} class="flex items-center justify-center text-gray-500 w-[30px] h-[30px] bg-gray-300 rounded-full text-lg">
                 <div><%= section %></div>
               </li>
               <%= if section < 4 do %>
