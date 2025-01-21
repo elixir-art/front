@@ -3,11 +3,9 @@ defmodule CalanderWeb.PageHtml.Form do
 
   def render(assigns) do
     ~H"""
-    <div id="hook_test" phx-hook="Form">
-      <button phx-click="handle_step_forward_animation">Next Step</button>
-      <button phx-click="handle_step_backward_animation">Prev Step</button>
-    </div>
     <form id="form" phx-hook="Form">
+      <button type="button" phx-click="handle_step_forward_animation">Next Step</button>
+      <button type="button" phx-click="handle_step_backward_animation">Prev Step</button>
       <div class="bg-red-500 py-[32px] px-[46px] border-2 border-gray-200 rounded-lg fixed top-[50%] left-[50%] transform -translate-x-[50%] -translate-y-[50%]">
         <div class="border-b-2 border-gray-200 mb-[40px]">
           <ul class="flex items-center justify-center space-x-4 mx-[25px] mb-[20px]">
@@ -86,14 +84,14 @@ defmodule CalanderWeb.PageHtml.Form do
           </div>
           <div class="flex flex-wrap gap-[15px]">
             <%= for second_section_blocks <- @second_section_blocks do %>
-              <div  class="p-[20px] bg-green-300 w-[48%]">
+              <div class="p-[20px] bg-green-300 w-[48%]">
                 <input
                   type="checkbox"
                   name="selected_services"
                   id={"#{second_section_blocks.id}"}
                   value={"#{second_section_blocks.text}"}
                 />
-                <label> <%=second_section_blocks.text%> </label>
+                <label><%= second_section_blocks.text %></label>
               </div>
             <% end %>
           </div>
@@ -111,12 +109,12 @@ defmodule CalanderWeb.PageHtml.Form do
                 <div class="ml-[30px]">
                   <input
                     type="radio"
-                    id={"#{third_section_block}"}
+                    id={"#{third_section_block.id}"}
                     name="project-budjet"
-                    value={"#{third_section_block}"}
+                    value={"#{third_section_block.text}"}
                     }
                   />
-                  <label for={"#{third_section_block}"}><%= third_section_block %></label>
+                  <label for={"#{third_section_block.text}"}><%= third_section_block.text %></label>
                 </div>
               </div>
             <% end %>
@@ -164,6 +162,25 @@ defmodule CalanderWeb.PageHtml.Form do
       }
     ]
 
+    third_section_blocks = [
+      %{
+        text: "$5.000-$10.000",
+        id: "small-amount"
+      },
+      %{
+        text: "$10.000-$20.000",
+        id: "medium-amount"
+      },
+      %{
+        text: "$20.000-$50.000",
+        id: "large-amount"
+      },
+      %{
+        text: "$50.000 +",
+        id: "max-amount"
+      }
+    ]
+
     {:ok,
      socket
      |> assign(show_animation: false)
@@ -171,54 +188,34 @@ defmodule CalanderWeb.PageHtml.Form do
      |> assign(sections: [1, 2, 3, 4])
      |> assign(second_section_blocks: second_section_blocks)
      |> assign(
-       third_section_blocks: ["$5.000-$10.000", "$10.000-$20.000", "$20.000-$50.000", "$50.000 +"]
+       third_section_blocks: third_section_blocks
      )}
   end
 
-  def handle_event("test", _, socket) do
-    {:noreply, push_event(socket, "test", %{test_parameter: "Hello World"})}
-  end
-
   def handle_event("handle_step_forward_animation", _params, socket) do
-    current_section = get_validated_next_section(socket.assigns.current_section)
+    current_section = socket.assigns.current_section
 
     {:noreply,
      push_event(
-       socket |> assign(current_section: current_section),
+       socket,
        "handle_step_forward_animation",
-       %{current_section_id: current_section}
+       %{current_section: current_section}
      )}
   end
 
   def handle_event("handle_step_backward_animation", _params, socket) do
-    current_section = get_validated_previous_section(socket.assigns.current_section)
+    current_section = socket.assigns.current_section
 
     {:noreply,
      push_event(
-       socket |> assign(current_section: current_section),
+       socket,
        "handle_step_backward_animation",
-       %{current_section_id: current_section}
+       %{current_section: current_section}
      )}
   end
 
-  def handle_event("receive_param", params, socket) do
-    IO.inspect(params)
-    {:noreply, socket}
-  end
-
-  defp get_validated_next_section(current_section) do
-    if(current_section + 1 > 4) do
-      current_section
-    else
-      current_section + 1
-    end
-  end
-
-  defp get_validated_previous_section(current_section) do
-    if(current_section - 1 < 1) do
-      current_section
-    else
-      current_section - 1
-    end
+  def handle_event("set_current_section", %{"current_section" => current_section}, socket) do
+    IO.inspect(current_section)
+    {:noreply, assign(socket, current_section: current_section)}
   end
 end
