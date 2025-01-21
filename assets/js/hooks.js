@@ -23,7 +23,6 @@ const Validator = {
   },
 
   validateForm(currentPage) {
-    console.log(currentPage)
     switch(currentPage) {
       case 1:
         return this.validateFirstPage()
@@ -138,7 +137,6 @@ Hooks.Form = {
     this.handleEvent("handle_step_forward_animation", (params) => {
       params.current_section = Validator.getValidatedIncrementedPage(params.current_section)
       if(!Validator.validateForm(params.current_section - 1)) {
-        console.log("BAD VALIDATION")
         return;
       }
       StepForwardAnimation.handleStepForwardAnimation(params);

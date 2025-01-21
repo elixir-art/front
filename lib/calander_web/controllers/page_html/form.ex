@@ -215,7 +215,6 @@ defmodule CalanderWeb.PageHtml.Form do
   end
 
   def handle_event("set_current_section", %{"current_section" => current_section}, socket) do
-    IO.inspect(current_section)
     {:noreply, assign(socket, current_section: current_section)}
   end
 end
