@@ -21,7 +21,6 @@ const Validator = {
     }
     return current_page
   },
-
   validateForm(currentPage) {
     switch(currentPage) {
       case 1:
@@ -121,11 +120,49 @@ const AnimationHelper = {
     if (section) {
       section.className = "hidden";
     }
+  },
+
+  changeButtonsVisibility(current_page) {
+    const prevBtn = document.getElementById("prev-btn");
+    const nextBtn = document.getElementById("next-btn");
+    if(current_page == 1) {
+      this.hide_button(prevBtn)
+      return;
+    }
+    else{
+      this.show_button(prevBtn)
+    }
+    if(current_page == 4) {
+      this.hide_button(nextBtn)
+      return;
+    }
+    else{
+      this.show_button(nextBtn)
+    }
+  },
+
+  hide_button(button) {
+    if (button) {
+      if (button.classList.contains("visible")) {
+        button.classList.remove("visible");
+        button.classList.add("hidden");
+      }
+    }
+  },
+
+  show_button(button) {
+    if (button) {
+      if (button.classList.contains("hidden")) {
+        button.classList.remove("hidden");
+        button.classList.add("visible");
+      }
+    }
   }
 }
 
 const StepForwardAnimation = {
   handleStepForwardAnimation(params) {
+    AnimationHelper.changeButtonsVisibility(params.current_section)
     const loader = AnimationHelper.getLoader(params.current_section);
     const section = AnimationHelper.getSection(params.current_section);
     const li = AnimationHelper.getLi(params.current_section - 1);
@@ -138,6 +175,7 @@ const StepForwardAnimation = {
 
 const StepBackWardAnimation = {
   handleStepBackwardAnimation(params) {
+    AnimationHelper.changeButtonsVisibility(params.current_section)
     const loader = AnimationHelper.getLoader(params.current_section + 1);
     const section = AnimationHelper.getSection(params.current_section);
     const li = AnimationHelper.getLi(params.current_section);
@@ -195,7 +233,7 @@ Hooks.CheckBoxOutline = {
 Hooks.RadioBoxOutline = {
   mounted() {
       this.el.querySelector('input').addEventListener('change', (event) => {
-        
+
       const allContainers = document.querySelectorAll('.radio-container');
       allContainers.forEach((container) =>
         container.classList.remove('border-blue-600', 'border-2')
