@@ -154,8 +154,22 @@ defmodule CalanderWeb.PageHtml.Form do
           </div>
         </section>
         <div class="mt-[20px] flex justify-between items-center">
-          <button class="rounded-full px-[40px] py-[15px] border-blue-700 border hidden" id="prev-btn" type="button" phx-click="handle_step_backward_animation"><p class="text-blue-800 font-light"> Previous Step </p></button>
-          <button class="rounded-full px-[40px] py-[15px] bg-blue-700 visible" id="next-btn" type="button" phx-click="handle_step_forward_animation"><p class="text-white">Next Step</p></button>
+          <button
+            class="rounded-full px-[40px] py-[15px] border-blue-700 border hidden"
+            id="prev-btn"
+            type="button"
+            phx-click="handle_step_backward_animation"
+          >
+            <p class="text-blue-800 font-light">Previous Step</p>
+          </button>
+          <button
+            class="rounded-full px-[40px] py-[15px] bg-blue-700 visible ml-auto"
+            id="next-btn"
+            type="button"
+            phx-click="handle_step_forward_animation"
+          >
+            <p class="text-white">Next Step</p>
+          </button>
         </div>
       </div>
     </form>
