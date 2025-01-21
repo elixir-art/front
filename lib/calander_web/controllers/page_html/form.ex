@@ -127,14 +127,14 @@ defmodule CalanderWeb.PageHtml.Form do
                 class="border border-gray-300 w-[48%] py-[30px] px-[10px] radio-container rounded-lg"
                 phx-hook="RadioBoxOutline"
               >
-                <div class="ml-[30px]">
+                <div class="ml-[20px]">
                   <input
                     type="radio"
                     id={"#{third_section_block.id}"}
                     name="project-budget"
                     value={"#{third_section_block.text}"}
                   />
-                  <label for={"#{third_section_block.id}"}><%= third_section_block.text %></label>
+                  <label class="ml-[7px]" for={"#{third_section_block.id}"}><%= third_section_block.text %></label>
                 </div>
               </div>
             <% end %>
