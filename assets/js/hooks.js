@@ -182,9 +182,9 @@ Hooks.CheckboxOutline = {
       const container = this.el;
 
       if (event.target.checked) {
-        container.classList.add('border-4', 'border-blue-600'); // Add outline when checked
+        container.classList.add('border-2', 'border-blue-800'); // Add outline when checked
       } else {
-        container.classList.remove('border-4', 'border-blue-600'); // Remove outline when unchecked
+        container.classList.remove('border-2', 'border-blue-800'); // Remove outline when unchecked
       }
     });
   }
