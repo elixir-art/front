@@ -157,11 +157,12 @@ defmodule CalanderWeb.PageHtml.Form do
             <div class="flex flex-wrap flex-col items-center justify-center w-[70%]">
               <h2 class="font-medium mb-[10px] text-xl">Submit your quote request</h2>
               <div class="mb-[15px]">
+              <img class="mx-auto my-[10px]" src={~p"/images/submit.png"} alt="final submit" width="157" height="143" />
                 <p class="text-base text-gray-300 text-center">
                   Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours.
                 </p>
               </div>
-              <button type="submit" id="submit-btn">Submit</button>
+              <button class="rounded-full py-[15px] px-[30px] bg-blue-700" type="submit" id="submit-btn"><p class="text-white">Submit</p></button>
             </div>
           </div>
         </section>

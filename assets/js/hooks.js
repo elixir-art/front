@@ -224,9 +224,9 @@ Hooks.CheckBoxOutline = {
       const container = this.el;
 
       if (event.target.checked) {
-        container.classList.add('border-2', 'border-blue-800'); // Add outline when checked
+        container.classList.add('border-2', 'border-blue-900'); // Add outline when checked
       } else {
-        container.classList.remove('border-2', 'border-blue-800'); // Remove outline when unchecked
+        container.classList.remove('border-2', 'border-blue-900'); // Remove outline when unchecked
       }
     });
   }
@@ -240,10 +240,10 @@ Hooks.RadioBoxOutline = {
 
       const allContainers = document.querySelectorAll('.radio-container');
       allContainers.forEach((container) =>
-        container.classList.remove('border-blue-600', 'border-2')
+        container.classList.remove('border-blue-900', 'border-2')
       );
 
-      this.el.classList.add('border-blue-600', 'border-2');
+      this.el.classList.add('border-blue-900', 'border-2');
     });
   },
 };
