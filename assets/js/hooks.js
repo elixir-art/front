@@ -220,13 +220,13 @@ Hooks.Form = {
 
 const InputStyler = {
   removeCheckStyleFromInput(container) {
-    container.classList.add('border-gray-300', 'border')
-    container.classList.remove('border-blue-800', 'border-2')
+    container.classList.add('ring-gray-300', 'ring-2')
+    container.classList.remove('ring-blue-800', 'ring')
   },
 
   addCheckCheckStyleToInput(container) {
-    container.classList.remove('border-gray-300', 'border');
-    container.classList.add('border-blue-800', 'border-2');
+    container.classList.remove('ring-gray-300', 'ring-2');
+    container.classList.add('ring-blue-800', 'ring');
   }
 }
 

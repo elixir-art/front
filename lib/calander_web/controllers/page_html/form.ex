@@ -101,7 +101,7 @@ defmodule CalanderWeb.PageHtml.Form do
               <%= for second_section_blocks <- @second_section_blocks do %>
                 <div
                   id={"block-#{second_section_blocks.id}"}
-                  class="p-[20px] border border-gray-300 w-[48%] checkbox-container rounded-lg"
+                  class="p-[20px] ring-2 ring-gray-300 w-[48%] checkbox-container rounded-lg"
                   phx-hook="CheckBoxOutline"
                 >
                   <label for={"#{second_section_blocks.id}"}>
@@ -132,11 +132,11 @@ defmodule CalanderWeb.PageHtml.Form do
                 Please select the project budget range you have in mind.
               </p>
             </div>
-            <div class="flex flex-wrap gap-[10px]">
+            <div class="flex flex-wrap gap-[15px]">
               <%= for third_section_block <- @third_section_blocks do %>
                 <div
                   id={"block-#{third_section_block.id}"}
-                  class="border border-gray-300 w-[48%] py-[30px] px-[10px] radio-container rounded-lg"
+                  class="ring-2 ring-gray-300 w-[48%] py-[30px] px-[10px] radio-container rounded-lg"
                   phx-hook="RadioBoxOutline"
                 >
                   <label for={"#{third_section_block.id}"}>
