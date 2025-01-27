@@ -19,13 +19,9 @@ const NewPage = () => {
     setStep((prevStep) => prevStep - 1);
   };
   const handleSubmit = () => {
-    setSubmit((prevSubmit) => !prevSubmit);
+    setSubmit((prevSubmit) => true);
+    setTimeout(() => setSubmit(false), 3000);
   };
-
-  // const setValues = (e) => {
-  //   console.log(e.target);
-  //   // setSelectedServices((prevState) => prevState - 1);
-  // };
 
   const formButton =
     "p-11 rounded-xl shadow-md border border-neutral_300 peer-checked:border-primary_blue peer-checked:border-2";
@@ -220,6 +216,10 @@ const NewPage = () => {
             )}
           </div>
         </div>
+        {submit &&(        
+          <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-300 text-white p-4 rounded-lg">
+          Form successful submit
+        </div>) }
       </div>
     </div>
   );
