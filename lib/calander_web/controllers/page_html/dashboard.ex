@@ -80,14 +80,14 @@ defmodule CalanderWeb.PageHtml.Dashboard do
         </header>
         <div class="container mx-auto bg-white">
           <h1 class="hidden pt-[20px] text-xl font-medium py-[20px] xl:block font-poppins">Dashboard</h1>
-          <div class="xl:flex gap-[5px]">
+          <div class="xl:flex xl:gap-[30px]">
             <div class="xl:w-[60%]">
               <section class="py-[20px]">
                 <h1 class="py-[10px] text-xl font-medium xl:hidden">Dashboard</h1>
                 <ul class="flex flex-col gap-[20px] md:flex-row md:justify-center md:items-center mb-[20px]">
                   <%= for card <- @first_cards do %>
                     <li class={"rounded-xl p-6 flex flex-col gap-[20px] #{card.background_color} md:basis-2/6" }>
-                      <h2 class="font-medium text-lg"><%= card.title %></h2>
+                      <h2 class="font-medium text-lg text-nowrap"><%= card.title %></h2>
                       <p class="text-2xl"><%= card.number %></p>
                       <p class={"text-lg #{card.text_color}"}><%= card.description %></p>
                     </li>
@@ -177,7 +177,7 @@ defmodule CalanderWeb.PageHtml.Dashboard do
                       Kindly check the requirements and terms of work and make sure everything is right.
                     </p>
                   </div>
-                  <div class="xl:flex xl:gap-[15px] xl:items-center ">
+                  <div class="xl:flex xl:gap-[15px] xl:items-center xl:justify-between ">
                     <h4 class="text-lg text-white mb-[20px] md:text-sm">
                       Today you makes 12 Activity
                     </h4>
