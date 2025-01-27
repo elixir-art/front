@@ -1,0 +1,293 @@
+<header class="mx-24 my-10 flex justify-between items-center">
+  <div>
+    <img src="/images/logo.png" alt="">
+  </div>
+  <div class="py-5 px-10 bg-primary rounded-full text-[#FFFFFF] text-lg font-bold drop-shadow-lg">
+    Clone now
+  </div>
+</header>
+<main>
+  <div class="py-32 px-80 bg-[#F7F7FB] flex-col items-center">
+    <div class="mb-10">
+      <h2 class="text-center text-4xl font-bold mb-3">Get a project quote</h2>
+      <p class="text-center text-lg text-[#6F6C90]">
+        Please fill the form below to receive a quote for your project.<br>Feel free to add as much detail as needed.
+      </p>
+    </div>
+    <div class="bg-[#FFFFFF] px-16 pt-8 pb-20 mb-8 rounded-3xl drop-shadow-lg">
+      <div class="px-20 pb-8 mb-16 border-b border-[#D9DBE9] flex items-center justify-between">
+        <div class="step bg-[#EFF0F6] rounded-full w-8 h-8 font-medium text-[#6F6C90] flex items-center justify-center">
+          1
+        </div>
+        <div class="step-bar bg-[#EFF0F6] h-1 w-52 rounded-full">
+          <div class="w-1/2 bg-primary h-1 rounded-full"></div>
+        </div>
+        <div class="step bg-[#EFF0F6] rounded-full w-8 h-8 text-[#6F6C90] flex items-center justify-center">
+          2
+        </div>
+        <div class="step-bar bg-[#EFF0F6] h-1 w-52 rounded-full">
+        </div>
+        <div class="step bg-[#EFF0F6] rounded-full w-8 h-8 text-[#6F6C90] flex items-center justify-center">
+          3
+        </div>
+        <div class="step-bar bg-[#EFF0F6] h-1 w-52 rounded-full">
+        </div>
+        <div class="step bg-[#EFF0F6] rounded-full w-8 h-8 text-[#6F6C90] flex items-center justify-center">
+          4
+        </div>
+      </div>
+
+      <div class="tab hidden">
+        <h3 class="text-[#170F49] font-bold text-2xl mb-2 choice">Contact details</h3>
+        <p class="text-[#6F6C90] text-lg mb-10 choice_details">Please fill your information so we can get in touch with you.</p>
+        <form id="regForm">
+          <div class="grid grid-cols-2 gap-7">
+            <div class="relative">
+              <label class="text-[#170F49] text-lg font-medium mb-4 block" for="username">
+                Name
+              </label>
+              <input class="drop-shadow p-5 text-lg border border-[#EFF0F6] rounded-full w-full" id="username" type="text" placeholder="John Carter">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-6 bottom-5" width="23" height="29" viewBox="0 0 23 29" fill="none">
+                <path d="M11.5629 14.2939C15.0647 14.2939 17.9034 11.4552 17.9034 7.95337C17.9034 4.45156 15.0647 1.61279 11.5629 1.61279C8.06106 1.61279 5.22229 4.45156 5.22229 7.95337C5.22229 11.4552 8.06106 14.2939 11.5629 14.2939Z" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M1.41797 27.4384C1.41797 24.7478 2.4868 22.1674 4.38935 20.2648C6.29189 18.3623 8.87229 17.2935 11.5629 17.2935C14.2535 17.2935 16.8339 18.3623 18.7364 20.2648C20.639 22.1674 21.7078 24.7478 21.7078 27.4384" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="relative">
+              <label class="text-[#170F49] text-lg font-medium mb-4 block" for="email">
+                Email
+              </label>
+              <input class="drop-shadow p-5 text-lg border border-[#EFF0F6] rounded-full w-full" id="email" type="email" placeholder="Email address">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-6 bottom-6" width="25" height="19" viewBox="0 0 25 19" fill="none">
+                <path d="M21.9883 1.52588H2.98828C1.88371 1.52588 0.988281 2.42131 0.988281 3.52588V15.5259C0.988281 16.6304 1.88371 17.5259 2.98828 17.5259H21.9883C23.0929 17.5259 23.9883 16.6304 23.9883 15.5259V3.52588C23.9883 2.42131 23.0929 1.52588 21.9883 1.52588Z" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M23.3993 2.10791L12.4883 11.0259L1.57727 2.10791" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="relative">
+              <label class="text-[#170F49] text-lg font-medium mb-4 block" for="phone">
+                Phone Number
+              </label>
+              <input class="drop-shadow p-5 text-lg border border-[#EFF0F6] rounded-full w-full" id="phone" type="tel" placeholder="(123) 456 - 7890">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute bottom-5 right-7" width="17" height="29" viewBox="0 0 17 29" fill="none">
+                <path d="M13.2434 1.51172H3.06946C1.82082 1.51172 0.808594 2.52394 0.808594 3.77259V25.2508C0.808594 26.4995 1.82082 27.5117 3.06946 27.5117H13.2434C14.492 27.5117 15.5042 26.4995 15.5042 25.2508V3.77259C15.5042 2.52394 14.492 1.51172 13.2434 1.51172Z" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M11.8595 1.51172V2.99295C11.8595 3.38579 11.7035 3.76255 11.4257 4.04033C11.1479 4.31812 10.7711 4.47418 10.3783 4.47418H5.9346C5.54175 4.47418 5.165 4.31812 4.88721 4.04033C4.60943 3.76255 4.45337 3.38579 4.45337 2.99295V1.51172" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="relative">
+              <label class="text-[#170F49] text-lg font-medium mb-4 block" for="company">
+                Company
+              </label>
+              <input class="drop-shadow p-5 text-lg border border-[#EFF0F6] rounded-full w-full" id="company" type="text" placeholder="Company name">
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute bottom-5 right-7" width="17" height="32" viewBox="0 0 17 32" fill="none">
+                <path d="M15.399 30.5116V6.86729C15.3989 6.6139 15.3191 6.36696 15.171 6.16138C15.0229 5.9558 14.8139 5.80198 14.5736 5.72168L2.50606 1.69918C2.32461 1.63837 2.13128 1.62165 1.94208 1.65039C1.75289 1.67914 1.57325 1.75253 1.41805 1.86449C1.26285 1.97644 1.13654 2.12375 1.04958 2.29422C0.962622 2.46469 0.917507 2.65342 0.917972 2.84479V30.5116" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.5703 22.8916V24.0984" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.5703 16.8579V18.0647" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M10.5703 10.8242V12.031" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.74609 22.8916V24.0984" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.74609 16.8579V18.0647" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M5.74609 10.8242V12.031" stroke="#A0A3BD" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab hidden">
+        <h3 class="text-[#170F49] font-bold text-2xl mb-2 choice">Our services</h3>
+        <p class="text-[#6F6C90] text-lg mb-10 choice_details">Please select which service you are interested in.</p>
+        <form id="regForm">
+          <div class="grid grid-cols-2 gap-7">
+            <div>
+              <input class="hidden peer" id="development" name="service" value="development" type="radio">
+              <label for="development" class="block flex items-center space-x-3 py-6 px-10 cursor-pointer peer-checked:ring-primary peer-checked:ring-[3px] drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl">
+                  <div>
+                    <img src="/images/dev.png" alt="">
+                  </div>
+                  <div class="text-lg font-semibold text-[#170F49] font-medium">Development</div>
+              </label>
+            </div>
+            <div>
+              <input class="hidden peer" id="design" name="service" value="design" type="radio">
+              <label for="design" class="block flex items-center space-x-3 py-6 px-10 cursor-pointer peer-checked:ring-primary peer-checked:ring-[3px] drop-shadow ring ring-[#EFF0F6] rounded-2xl">
+                <div>
+                  <img src="/images/design.png" alt="">
+                </div>
+                <div class="text-lg font-semibold text-[#170F49] font-medium">Web Design</div>
+              </label>
+            </div>
+            <div>
+              <input class="hidden peer" id="marketing" name="service" value="marketing" type="radio">
+              <label for="marketing" class="block flex items-center space-x-3 py-6 px-10 cursor-pointer peer-checked:ring-primary peer-checked:ring-[3px] drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl">
+                <div>
+                  <img src="/images/marketing.png" alt="">
+                </div>
+                <div class="text-lg font-semibold text-[#170F49] font-medium">Marketing</div>
+              </label>
+            </div>
+            <div>
+              <input class="hidden peer" id="other" name="service" value="other" type="radio">
+              <label for="other" class="block flex items-center space-x-3 py-6 px-10 cursor-pointer peer-checked:ring-primary peer-checked:ring-[3px] drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl">
+                <div>
+                  <img src="/images/other.png" alt="">
+                </div>
+                <div class="text-lg font-semibold text-[#170F49] font-medium">Other</div>
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab hidden">
+        <h3 class="text-[#170F49] font-bold text-2xl mb-2 choice">What's your project budget?</h3>
+        <p class="text-[#6F6C90] text-lg mb-10 choice_details">Please select the project budget range you have in mind.</p>
+        <form id="regForm">
+          <div class="grid grid-cols-2 gap-7">
+            <div>
+              <label for="budget-sm" class="block flex items-center space-x-3 py-12 px-8 cursor-pointer drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl has-[:checked]:ring-primary has-[:checked]:ring-[3px]">
+                <input class="w-6 h-6" id="budget-sm" name="budget" value="budget-sm" type="radio">
+                <div class="text-lg font-semibold text-[#170F49] font-medium">$5.000 - $10.000</div>
+              </label>
+            </div>
+            <div>
+              
+              <label for="budget-m" class="block flex items-center space-x-3 py-12 px-8 cursor-pointer has-[:checked]:ring-primary has-[:checked]:ring-[3px] drop-shadow ring ring-[#EFF0F6] rounded-2xl">
+                <input class="w-6 h-6" id="budget-m" name="budget" value="budget-m" type="radio">
+                <div class="text-lg font-semibold text-[#170F49] font-medium">$10.000 - $20.000</div>
+              </label>
+            </div>
+            <div>
+              <label for="budget-l" class="block flex items-center space-x-3 py-12 px-8 cursor-pointer has-[:checked]:ring-primary has-[:checked]:ring-[3px] drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl">
+                <input class="w-6 h-6" id="budget-l" name="budget" value="budget-l" type="radio">
+                <div class="text-lg font-semibold text-[#170F49] font-medium">$20.000 - $50.000</div>
+              </label>
+            </div>
+            <div>
+              <label for="budget-xl" class="block flex items-center space-x-3 py-12 px-8 cursor-pointer has-[:checked]:ring-primary has-[:checked]:ring-[3px] drop-shadow ring-2 ring-[#EFF0F6] rounded-2xl">
+                <input class="w-6 h-6" id="budget-xl" name="budget" value="budget-xl" type="radio">
+                <div class="text-lg font-semibold text-[#170F49] font-medium">$50.000 +</div>
+              </label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="tab hidden py-10 px-24">
+        <div class="flex flex-col items-center">
+          <img src="/images/done.png">
+          <h3 class="pt-5 pb-2 text-[#170F49] font-bold text-2xl">Submit your quote request</h3>
+          <p class="text-[#6F6C90] text-lg text-center mb-5">Please review all the information you previously typed in<br> the past steps, and if all is okay, submit your message to<br> receive a project quote in 24 - 48 hours.</p>
+          <button id="submitButton" class="px-10 py-5 rounded-full bg-primary text-[#FFFFFF] font-bold text-lg">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex" id="tabsBtns">
+      <button class="px-10 py-5 rounded-full border border-primary text-primary text-lg" id="prevBtn" onclick="nextPrev(-1)">Previous step</button>
+      <button class="px-10 py-5 rounded-full bg-primary text-[#FFFFFF] font-bold text-lg drop-shadow-lg" id="nextBtn" onclick="nextPrev(1)">Next step</button>
+    </div>
+  </div>
+</main>
+
+<script>
+  var currentTab = 0;
+  showTab(currentTab);
+  
+  function showTab(n) {
+    var x = document.getElementsByClassName("tab");
+
+    x[n].style.display = "block";
+
+    if (n == 0) {
+      document.getElementById("prevBtn").style.display = "none";
+      document.getElementById("tabsBtns").classList.remove("justify-between")
+      document.getElementById("tabsBtns").classList.add("justify-end")
+    } else {
+      document.getElementById("prevBtn").style.display = "inline";
+      document.getElementById("tabsBtns").classList.remove("justify-end")
+      document.getElementById("tabsBtns").classList.add("justify-between")
+    }
+    if (n == (x.length - 1)) {
+      document.getElementById("nextBtn").style.display = "none";
+    } else {
+      document.getElementById("nextBtn").style.display = "inline";
+    }
+
+    fixStepIndicator(n)
+  }
+  
+  function nextPrev(n) {
+    var x = document.getElementsByClassName("tab");
+
+    if (n === 1 && !validateForm()) {
+        return false;
+    }
+
+    x[currentTab].style.display = "none";
+
+    currentTab = currentTab + n;
+
+    if (currentTab >= x.length) {
+      document.getElementById("regForm").submit();
+      return false;
+    }
+
+    showTab(currentTab);
+}
+
+function fixStepIndicator(n) {
+  var steps = document.getElementsByClassName("step");
+  var stepBars = document.getElementsByClassName("step-bar");
+
+  for (var i = 0; i <= n; i++) {
+    steps[i].classList.add("bg-primary", "text-[#FFFFFF]");
+  }
+
+  for (var i = n + 1; i < steps.length; i++) {
+    steps[i].classList.remove("bg-primary", "text-[#FFFFFF]");
+  }
+
+  for (var i = 0; i < stepBars.length; i++) {
+    if (i < n) {
+      stepBars[i].innerHTML = `<div class="w-full bg-primary h-1 rounded-full"></div>`;
+    } else if (i === n) {
+      stepBars[i].innerHTML = `<div class="w-1/2 bg-primary h-1 rounded-full"></div>`;
+    } else {
+      stepBars[i].innerHTML = ``;
+    }
+  }
+}
+
+  function validateForm() {
+    var x, i, valid = true;
+    x = document.getElementsByClassName("tab");
+    var currentTabForm = x[currentTab].querySelectorAll("input, .radio-group");
+    
+    for (i = 0; i < currentTabForm.length; i++) {
+        if (currentTabForm[i].type === "radio") {
+            var radioGroup = document.getElementsByName(currentTabForm[i].name);
+            if (![...radioGroup].some(radio => radio.checked)) {
+                valid = false;
+                var label = document.querySelector(`label[for="${currentTabForm[i].id}"]`);
+                if (label) {
+                    label.classList.add("ring-[#FF2D46]");
+                }
+            } else {
+                var label = document.querySelector(`label[for="${currentTabForm[i].id}"]`);
+                if (label) {
+                    label.classList.remove("ring-[#FF2D46]");
+                }
+            }
+        } else if (currentTabForm[i].value === "") {
+            currentTabForm[i].classList.add("border-[#FF2D46]");
+            valid = false;
+        } else {
+            currentTabForm[i].classList.remove("border-[#FF2D46]");
+        }
+    }
+  
+    return valid;
+  }
+
+  document.getElementById("submitButton").addEventListener("click", function() {
+    location.reload();
+  });
+</script>
