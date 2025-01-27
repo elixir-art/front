@@ -224,9 +224,9 @@ const InputStyler = {
     container.classList.remove('border-blue-800', 'border-2')
   },
 
-  addCheckCheckStyleToInput(classList) {
-    classList.remove('border-gray-300', 'border');
-    classList.add('border-blue-800', 'border-2');
+  addCheckCheckStyleToInput(container) {
+    container.classList.remove('border-gray-300', 'border');
+    container.classList.add('border-blue-800', 'border-2');
   }
 }
 
@@ -236,10 +236,9 @@ Hooks.CheckBoxOutline = {
       const container = this.el;
 
       if (event.target.checked) {
-        
-        container.classList.add('border-2', 'border-blue-800'); // Add outline when checked
+        InputStyler.addCheckCheckStyleToInput(container)
       } else {
-        container.classList.remove('border-2', 'border-blue-800'); // Remove outline when unchecked
+        InputStyler.removeCheckStyleFromInput(container)
       }
     });
   }
@@ -254,7 +253,7 @@ Hooks.RadioBoxOutline = {
       InputStyler.removeCheckStyleFromInput(container)
       );
 
-      InputStyler.addCheckCheckStyleToInput(this.el.classList)
+      InputStyler.addCheckCheckStyleToInput(this.el)
     });
   },
 };
