@@ -218,12 +218,25 @@ Hooks.Form = {
   }
 };
 
+const InputStyler = {
+  removeCheckStyleFromInput(container) {
+    container.classList.add('border-gray-300', 'border')
+    container.classList.remove('border-blue-800', 'border-2')
+  },
+
+  addCheckCheckStyleToInput(classList) {
+    classList.remove('border-gray-300', 'border');
+    classList.add('border-blue-800', 'border-2');
+  }
+}
+
 Hooks.CheckBoxOutline = {
   mounted() {
     this.el.querySelector('input').addEventListener('change', (event) => {
       const container = this.el;
 
       if (event.target.checked) {
+        
         container.classList.add('border-2', 'border-blue-800'); // Add outline when checked
       } else {
         container.classList.remove('border-2', 'border-blue-800'); // Remove outline when unchecked
@@ -232,18 +245,16 @@ Hooks.CheckBoxOutline = {
   }
 };
 
-
-
 Hooks.RadioBoxOutline = {
   mounted() {
       this.el.querySelector('input').addEventListener('change', (event) => {
 
       const allContainers = document.querySelectorAll('.radio-container');
       allContainers.forEach((container) =>
-        container.classList.remove('border-blue-800', 'border-2')
+      InputStyler.removeCheckStyleFromInput(container)
       );
 
-      this.el.classList.add('border-blue-800', 'border-2');
+      InputStyler.addCheckCheckStyleToInput(this.el.classList)
     });
   },
 };
