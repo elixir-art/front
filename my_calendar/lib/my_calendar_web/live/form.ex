@@ -12,18 +12,19 @@ defmodule MyCalendarWeb.Form do
        form_data: %{
          "budget" => "5000-10000",
          "service" => "development",
-         "name" => ""
+         "name" => "",
+         "email" => "",
+         "phone" => "",
+         "company" => ""
        },
        errors: %{}
      )}
   end
 
   def handle_event("submit_form", _params, socket) do
-    form_data = socket.assigns.form_data
-
-    IO.inspect(form_data, label: "Form data submitted")
-
-    {:noreply, socket}
+    {:noreply,
+     socket
+     |> put_flash(:info, "Yours data:\n#{Jason.encode!(socket.assigns.form_data, pretty: true)}")}
   end
 
   def handle_event(
@@ -34,7 +35,10 @@ defmodule MyCalendarWeb.Form do
     errors = validate_name(socket.assigns.errors, name)
 
     {:noreply,
-     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+     assign(socket,
+       form_data: Map.merge(socket.assigns.form_data, %{"name" => name}),
+       errors: errors
+     )}
   end
 
   def handle_event(
@@ -45,7 +49,10 @@ defmodule MyCalendarWeb.Form do
     errors = validate_email(socket.assigns.errors, email)
 
     {:noreply,
-     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+     assign(socket,
+       form_data: Map.merge(socket.assigns.form_data, %{"email" => email}),
+       errors: errors
+     )}
   end
 
   def handle_event(
@@ -56,7 +63,10 @@ defmodule MyCalendarWeb.Form do
     errors = validate_phone(socket.assigns.errors, phone)
 
     {:noreply,
-     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+     assign(socket,
+       form_data: Map.merge(socket.assigns.form_data, %{"phone" => phone}),
+       errors: errors
+     )}
   end
 
   def handle_event(
@@ -68,90 +78,47 @@ defmodule MyCalendarWeb.Form do
     errors = validate_company(socket.assigns.errors, company)
 
     {:noreply,
-     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+     assign(socket,
+       form_data: Map.merge(socket.assigns.form_data, %{"company" => company}),
+       errors: errors
+     )}
   end
 
   def handle_info({:update_parent_state, value}, socket) do
     {:noreply, assign(socket, form_data: Map.merge(socket.assigns.form_data, value))}
   end
 
-  def handle_event("next_step", _params, socket) do
-    {:noreply, assign(socket, current_step: socket.assigns.current_step + 1)}
+  def handle_event(
+        "next_step",
+        _params,
+        %{assigns: %{current_step: step, form_data: form_data}} = socket
+      ) do
+    case validate_step(step, form_data) do
+      :ok ->
+        {:noreply, assign(socket, current_step: socket.assigns.current_step + 1)}
+
+      {:error, errors} ->
+        {:noreply, assign(socket, errors: errors)}
+    end
   end
 
   def handle_event("prev_step", _params, socket) do
     {:noreply, assign(socket, current_step: max(socket.assigns.current_step - 1, 1))}
   end
 
-  defp validate_name(errors, name) do
-    if String.split(name) |> Enum.count() < 2 do
-      Map.put(errors, :name, "Name must be at least two words.")
-    else
-      Map.delete(errors, :name)
-    end
+  defp validate_step(1, form_data) do
+    errors =
+      %{}
+      |> validate_company(form_data["company"])
+      |> validate_email(form_data["email"])
+      |> validate_name(form_data["name"])
+      |> validate_phone(form_data["phone"])
+
+    if map_size(errors) == 0, do: :ok, else: {:error, errors}
   end
 
-  defp validate_email(errors, email) do
-    if Regex.match?(~r/^[^\s@]+@[^\s@]+\.[^\s@]+$/, email) do
-      Map.delete(errors, :email)
-    else
-      Map.put(errors, :email, "Invalid email format.")
-    end
-  end
-
-  defp validate_phone(errors, phone) do
-    if Regex.match?(~r/^\(\d{3}\) \d{3} - \d{4}$/, phone) do
-      Map.delete(errors, :phone)
-    else
-      Map.put(errors, :phone, "Invalid phone number format. Use (123) 456 - 7890.")
-    end
-  end
-
-  defp validate_company(errors, company) do
-    if String.trim(company) == "" do
-      Map.put(errors, :company, "Company name cannot be blank.")
-    else
-      Map.delete(errors, :company)
-    end
-  end
-
-  defp validate_form(form_data) do
-    Enum.reduce(form_data, %{}, fn
-      {"name", value}, acc ->
-        if String.trim(value) == "" do
-          Map.put(acc, "name", "Name is required")
-        else
-          acc
-        end
-
-      {"email", value}, acc ->
-        if String.trim(value) == "" do
-          Map.put(acc, "email", "Email is required")
-        else
-          if Regex.match?(~r/^[\w._%+-]+@[\w.-]+\.[a-zA-Z]{2,}$/, value) do
-            acc
-          else
-            Map.put(acc, "email", "Invalid email format")
-          end
-        end
-
-      {"phone", value}, acc ->
-        if String.trim(value) == "" do
-          Map.put(acc, "phone", "Phone number is required")
-        else
-          acc
-        end
-
-      {"company", value}, acc ->
-        if String.trim(value) == "" do
-          Map.put(acc, "company", "Company name is required")
-        else
-          acc
-        end
-
-      _, acc ->
-        acc
-    end)
+  defp validate_step(_, _) do
+    :ok
   end
 
   def render(assigns) do
@@ -203,6 +170,38 @@ defmodule MyCalendarWeb.Form do
       </div>
     </div>
     """
+  end
+
+  defp validate_name(errors, name) do
+    if String.split(name) |> Enum.count() < 2 do
+      Map.put(errors, :name, "Name must be at least two words.")
+    else
+      Map.delete(errors, :name)
+    end
+  end
+
+  defp validate_email(errors, email) do
+    if Regex.match?(~r/^[^\s@]+@[^\s@]+\.[^\s@]+$/, email) do
+      Map.delete(errors, :email)
+    else
+      Map.put(errors, :email, "Invalid email format.")
+    end
+  end
+
+  defp validate_phone(errors, phone) do
+    if Regex.match?(~r/^\(\d{3}\) \d{3} - \d{4}$/, phone) do
+      Map.delete(errors, :phone)
+    else
+      Map.put(errors, :phone, "Invalid phone number format. Use (123) 456 - 7890.")
+    end
+  end
+
+  defp validate_company(errors, company) do
+    if String.trim(company) == "" do
+      Map.put(errors, :company, "Company name cannot be blank.")
+    else
+      Map.delete(errors, :company)
+    end
   end
 
   defp progress_class(current_step, step) do

@@ -75,7 +75,6 @@ defmodule MyCalendarWeb.Form.Contacts do
       |> assign(:contacts, contacts)
       |> assign(assigns)
 
-      IO.inspect(assigns.errors)
     {:ok, socket}
   end
 
@@ -88,7 +87,7 @@ defmodule MyCalendarWeb.Form.Contacts do
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <%= for contact <- @contacts do %>
             <div>
-              <label for={contact.name} class="block text-sm font-medium text-gray-700 mb-4">
+              <label for={contact.name} class="block text-sm font-medium text-gray-700 mb-4 ml-2">
                 <%= contact.label %>
               </label>
               <div class="relative">
@@ -113,7 +112,9 @@ defmodule MyCalendarWeb.Form.Contacts do
                 </div>
               </div>
               <%= if {assigns.errors["name"]} do %>
-                <p class="text-red-500 text-sm mt-2"><%= assigns.errors[contact.error_name] %></p>
+                <p class="text-red-500 text-sm mt-2 ml-2">
+                  <%= assigns.errors[contact.error_name] %>
+                </p>
               <% end %>
             </div>
           <% end %>

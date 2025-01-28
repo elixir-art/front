@@ -54,7 +54,8 @@ module.exports = {
         input: "46px",
         button: "56px",
         form: "34px",
-        target: "16px"
+        target: "16px",
+        progress: "40px"
       },
       borderColor: {
         active: "#4A3AFF"
