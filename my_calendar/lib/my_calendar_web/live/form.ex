@@ -11,7 +11,8 @@ defmodule MyCalendarWeb.Form do
        number_of_components: @number_of_components,
        form_data: %{
          "budget" => "5000-10000",
-         "service" => "development"
+         "service" => "development",
+         "name" => ""
        },
        errors: %{}
      )}
@@ -25,13 +26,49 @@ defmodule MyCalendarWeb.Form do
     {:noreply, socket}
   end
 
-  def handle_event("update_form", params, socket) do
-    %{"form_data" => %{"company" => company, "email" => email, "name" => name, "phone" => phone}} =
-      params
+  def handle_event(
+        "update_form",
+        %{"_target" => ["form_data", "name"], "form_data" => %{"name" => name}} = form_data,
+        socket
+      ) do
+    errors = validate_name(socket.assigns.errors, name)
 
-    form_data = %{"company" => company, "email" => email, "name" => name, "phone" => phone}
+    {:noreply,
+     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+  end
 
-    {:noreply, assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data))}
+  def handle_event(
+        "update_form",
+        %{"_target" => ["form_data", "email"], "form_data" => %{"email" => email}} = form_data,
+        socket
+      ) do
+    errors = validate_email(socket.assigns.errors, email)
+
+    {:noreply,
+     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+  end
+
+  def handle_event(
+        "update_form",
+        %{"_target" => ["form_data", "phone"], "form_data" => %{"phone" => phone}} = form_data,
+        socket
+      ) do
+    errors = validate_phone(socket.assigns.errors, phone)
+
+    {:noreply,
+     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
+  end
+
+  def handle_event(
+        "update_form",
+        %{"_target" => ["form_data", "company"], "form_data" => %{"company" => company}} =
+          form_data,
+        socket
+      ) do
+    errors = validate_company(socket.assigns.errors, company)
+
+    {:noreply,
+     assign(socket, form_data: Map.merge(socket.assigns.form_data, form_data), errors: errors)}
   end
 
   def handle_info({:update_parent_state, value}, socket) do
@@ -44,6 +81,38 @@ defmodule MyCalendarWeb.Form do
 
   def handle_event("prev_step", _params, socket) do
     {:noreply, assign(socket, current_step: max(socket.assigns.current_step - 1, 1))}
+  end
+
+  defp validate_name(errors, name) do
+    if String.split(name) |> Enum.count() < 2 do
+      Map.put(errors, :name, "Name must be at least two words.")
+    else
+      Map.delete(errors, :name)
+    end
+  end
+
+  defp validate_email(errors, email) do
+    if Regex.match?(~r/^[^\s@]+@[^\s@]+\.[^\s@]+$/, email) do
+      Map.delete(errors, :email)
+    else
+      Map.put(errors, :email, "Invalid email format.")
+    end
+  end
+
+  defp validate_phone(errors, phone) do
+    if Regex.match?(~r/^\(\d{3}\) \d{3} - \d{4}$/, phone) do
+      Map.delete(errors, :phone)
+    else
+      Map.put(errors, :phone, "Invalid phone number format. Use (123) 456 - 7890.")
+    end
+  end
+
+  defp validate_company(errors, company) do
+    if String.trim(company) == "" do
+      Map.put(errors, :company, "Company name cannot be blank.")
+    else
+      Map.delete(errors, :company)
+    end
   end
 
   defp validate_form(form_data) do
@@ -105,12 +174,13 @@ defmodule MyCalendarWeb.Form do
           <% end %>
         </div>
         <div class="w-full h-0.5 bg-card_bg-gray3"></div>
-      
+
         <.live_component
           module={component_for(@current_step)}
           id={"step-#{@current_step}"}
           class="mt-14"
           errors={@errors}
+          formData={@form_data}
         />
       </div>
       <div class={"w-[698px] mx-auto mt-8 flex #{if @current_step == 1, do: "justify-end", else: "justify-between"}"}>

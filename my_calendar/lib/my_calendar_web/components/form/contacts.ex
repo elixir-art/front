@@ -6,6 +6,7 @@ defmodule MyCalendarWeb.Form.Contacts do
     contacts = [
       %{
         name: "name",
+        error_name: :name,
         placeholder: "John Carter",
         type: "text",
         label: "Name",
@@ -21,6 +22,7 @@ defmodule MyCalendarWeb.Form.Contacts do
       },
       %{
         name: "email",
+        error_name: :email,
         placeholder: "Email address",
         type: "email",
         label: "Email",
@@ -36,6 +38,7 @@ defmodule MyCalendarWeb.Form.Contacts do
       },
       %{
         name: "phone",
+        error_name: :phone,
         placeholder: "(123) 456 - 7890",
         type: "text",
         label: "Phone Number",
@@ -51,6 +54,7 @@ defmodule MyCalendarWeb.Form.Contacts do
       },
       %{
         name: "company",
+        error_name: :company,
         placeholder: "Company name",
         type: "text",
         label: "Company",
@@ -71,6 +75,7 @@ defmodule MyCalendarWeb.Form.Contacts do
       |> assign(:contacts, contacts)
       |> assign(assigns)
 
+      IO.inspect(assigns.errors)
     {:ok, socket}
   end
 
@@ -91,8 +96,9 @@ defmodule MyCalendarWeb.Form.Contacts do
                   type={contact.type}
                   name={"form_data[#{contact.name}]"}
                   id={contact.name}
-                  class={"#{if assigns.errors[contact.name], do: "border-2 border-rose-600", else: "border-gray-300" } w-72 h-16 px-4 py-2 border rounded-input focus:ring-indigo-500 focus:border-indigo-500"}
+                  class={"#{if assigns.errors[contact.error_name], do: "border-2 border-rose-600", else: "border-gray-300" } w-72 h-16 px-4 py-2 border rounded-input focus:ring-indigo-500 focus:border-indigo-500"}
                   placeholder={contact.placeholder}
+                  value={assigns[:formData][contact.name] || ""}
                 />
                 <div class="absolute inset-y-0 right-12 flex items-center text-gray-400">
                   <IconComponent.render
@@ -106,8 +112,8 @@ defmodule MyCalendarWeb.Form.Contacts do
                   />
                 </div>
               </div>
-              <%= if @errors[contact.name] do %>
-                <p class="text-red-500 text-sm mt-2"><%= @errors[contact.name] %></p>
+              <%= if {assigns.errors["name"]} do %>
+                <p class="text-red-500 text-sm mt-2"><%= assigns.errors[contact.error_name] %></p>
               <% end %>
             </div>
           <% end %>
