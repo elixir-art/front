@@ -90,7 +90,7 @@ defmodule MyCalendarWeb.Dashboard do
           </div>
         </div>
 
-        <div class='w-full h-px bg-card_bg-gray3'></div>
+        <div class="w-full h-px bg-card_bg-gray3"></div>
 
         <div class="container mx-auto bg-white px-5 pb-6 md:px-14">
           <h1 class="pt-5 text-xl font-medium py-5 xl:block">Dashboard</h1>
