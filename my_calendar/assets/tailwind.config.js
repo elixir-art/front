@@ -48,7 +48,9 @@ module.exports = {
         },
         formSecondary: {
           200: "#EFF0F6"
-        }
+        },
+        red: "#FB3F4A",
+        green: "#589C5F"
       },
       borderRadius: {
         input: "46px",
