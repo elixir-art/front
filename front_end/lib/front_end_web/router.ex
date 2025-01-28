@@ -21,6 +21,7 @@ defmodule FrontEndWeb.Router do
     live("/icon", IconLive)
     live("/calendar", CalendarLive)
     live("/dashboard", DashboardLive)
+    live("/form", FormLive)
   end
 
   # Other scopes may use custom stacks.

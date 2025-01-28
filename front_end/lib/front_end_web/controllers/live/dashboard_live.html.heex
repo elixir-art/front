@@ -1,9 +1,11 @@
 <div class="flex">
-  <aside class="sticky pt-5 hidden md:visible md:block bg-gray-100">
+  <aside class="sticky lg:h-screen pt-5 hidden md:visible md:block bg-gray-100">
     <header class="text-center mb-10 lg:mx-[67px] mx-3 font-poppins font-semibold lg:text-4xl">WeHR</header>
     <nav
       class="w-fit [&>div]:px-[30px] [&>div]:flex [&>div]:space-x-6 [&>div]:size-fit [&>div]:py-2.5 md:[&_*]:not(span):visible [&_*_span]:hidden lg:[&_*_span]:visible lg:[&_*_span]:block">
-      <p class="text-center lg:text-start lg:ml-[30px] my-2.5 overflow-shrink font-roboto font-medium lg:text-xs text-xxss text-gray-500">MAIN MENU</p>
+      <p
+        class="text-center lg:text-start lg:ml-[30px] my-2.5 overflow-shrink font-roboto font-medium lg:text-xs text-xxss text-gray-500">
+        MAIN MENU</p>
       <div>
         <.iconify icon="bxs:dashboard" class="size-5 text-orange-800" /> <span class="text-orange-800">Dashboard</span>
       </div>
@@ -19,7 +21,9 @@
       <div>
         <.department_icon /><span>Department</span>
       </div>
-      <p class="lg:text-start lg:ml-[30px] text-center mt-10 my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">OTHER</p>
+      <p
+        class="lg:text-start lg:ml-[30px] text-center mt-10 my-2.5 font-roboto font-medium lg:text-xs text-xxss text-gray-500">
+        OTHER</p>
       <div>
         <.iconify icon="bx:support" class="size-5 text-gray-300" /> <span>Support</span>
       </div>
@@ -70,7 +74,7 @@
             </.gray_bubble>
           </.list_bubble>
         </div>
-        <div class="md:flex lg:col-span-2 lg:flex-col gap-3.5">
+        <div class="md:flex lg:col-span-2 lg:flex-col space-y-3.5 md:space-y-0 md:gap-3.5">
           <div id="recent-activity" class="rounded-lg overflow-hidden size-fit">
             <div class="bg-jean-400">
               <h3 class="text-white text-base font-poppins py-4 ml-5 mr-2.5">Recent Activity</h3>

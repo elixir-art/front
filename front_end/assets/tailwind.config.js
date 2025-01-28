@@ -6,7 +6,7 @@ const fs = require("fs")
 const path = require("path")
 
 module.exports = {
-  darkMode: 'selector',
+  darkMode: 'class',
   variants: {
     extend: {
       maskImage: ['hover', 'focus'],
@@ -15,7 +15,9 @@ module.exports = {
   content: [
     "./js/**/*.js",
     "../lib/front_end_web.ex",
-    "../lib/front_end_web/**/*.*ex"
+    "../lib/front_end_web/**/*.{heex,ex,exs}",
+    "./js/**/*.js",
+    "./css/*.css"
   ],
   safelist: [
     {
@@ -23,14 +25,27 @@ module.exports = {
     },
     {
       pattern: /text-(orange|blue|pink)-800/,
+    },
+    {
+      pattern: /bg-(selected|selected-dark)/
     }
   ],
   theme: {
     extend: {
+      keyframes: {
+        'bg-shift': {
+          '0%': { backgroundPosition: '100% 0' },
+          '100%': { backgroundPosition: '0 0' },
+        },
+      },
+      animation: {
+        'bg-shift': 'bg-shift 0.7s ease-in-out forwards',
+      },
       fontFamily: {
         poppins: ["Poppins", "sans-serif"],
         roboto: ["Roboto", "sans-serif"], 
-        rubik: ["Rubik", "sans-serif"]  
+        rubik: ["Rubik", "sans-serif"],
+        inter: ["Inter", "sans-serif"],  
       },
       fontSize: {
         xxxs: '5px',
@@ -39,20 +54,29 @@ module.exports = {
         myxl: ['42px','28px']
       },
       colors: {
+        selected: {
+          DEFAULT: "#FB3F4A",
+          dark: "#589C5F"
+        },
         'gray': {
           50: "#EFEFEF",
           100: "#FAFAFA",
+          200: "#EFF0F6",
           300: "#B2B2B2",
           400: "#E0E0E0",
           500: "#686868",
+          600: "#A0A3BD",
+          700: "#6F6C90",
           800: "#303030"
         },
         'orange': {
           100: "#FFEFE7",
+          500: "#FF3951",
           800: "#FF5151"
         },
         'blue': {
           100: "#E8F0FB",
+          500: "#4A3AFF",
           800: "#3786F1"
         },
         'pink': {
@@ -67,8 +91,6 @@ module.exports = {
         'primary': "#333333",
         'secondary': "#666666",
         'secondary-dark':"#CCCCCC",
-        'selected': "#FB3F4A",
-        'selected-dark':"#589C5F",
         'percent-fill': "#FFEFE7"
       },
       spacing: {
