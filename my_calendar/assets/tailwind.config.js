@@ -42,8 +42,23 @@ module.exports = {
         accent_pink: "#EE61CF",
         mainColor: '#FF5151',
         coldBlack: "black",
-        customGray: "gray"
+        customGray: "gray",
+        formPrimary: {
+          200: "#4A3AFF",
+        },
+        formSecondary: {
+          200: "#EFF0F6"
+        }
       },
+      borderRadius: {
+        input: "46px",
+        button: "56px",
+        form: "34px",
+        target: "16px"
+      },
+      borderColor: {
+        active: "#4A3AFF"
+      }
     },
   },
   plugins: [

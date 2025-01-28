@@ -57,7 +57,7 @@ defmodule MyCalendarWeb.Form.Service do
       <div class="grid grid-cols-2 gap-y-6 gap-x-7">
         <%= for service <- @services do %>
           <label phx-click="select_service" phx-value-service={service.name} phx-target={@myself}>
-            <div class={"flex items-center p-6 gap-3 rounded-target border-2 #{if @selected_service == service.name, do: "border-active", else: "border-target"} shadow-card"}>
+            <div class={"flex items-center p-6 gap-3 rounded-target border-2 #{if @selected_service == service.name, do: "border-active", else: "border-target"} shadow-card cursor-pointer"}>
               <div class="flex justify-center items-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-600">
                 <IconComponent.render
                   name={service.icon.name}

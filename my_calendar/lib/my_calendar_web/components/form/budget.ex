@@ -34,7 +34,7 @@ defmodule MyCalendarWeb.Form.Budget do
       <div class="grid grid-cols-2 gap-y-6 gap-x-7">
         <%= for budget <- @budget_checkbox do %>
           <label phx-click="update_state" phx-value-budget={budget.price} phx-target={@myself}>
-            <div class={"flex items-center gap-3 py-11 px-8 rounded-target border-2 #{if @selected_budget == budget.price, do: "border-active", else: "border-target"} shadow-card"}>
+            <div class={"flex items-center gap-3 py-11 px-8 rounded-target border-2 #{if @selected_budget == budget.price, do: "border-active", else: "border-target"} shadow-card cursor-pointer"}>
               <input
                 type="radio"
                 name="budget"
