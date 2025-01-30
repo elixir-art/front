@@ -29,7 +29,7 @@ defmodule MyCalendarWeb.Form do
 
   def handle_event(
         "update_form",
-        %{"_target" => ["form_data", "name"], "form_data" => %{"name" => name}} = form_data,
+        %{"_target" => ["form_data", "name"], "form_data" => %{"name" => name}} = _form_data,
         socket
       ) do
     errors = validate_name(socket.assigns.errors, name)
@@ -43,7 +43,7 @@ defmodule MyCalendarWeb.Form do
 
   def handle_event(
         "update_form",
-        %{"_target" => ["form_data", "email"], "form_data" => %{"email" => email}} = form_data,
+        %{"_target" => ["form_data", "email"], "form_data" => %{"email" => email}} = _form_data,
         socket
       ) do
     errors = validate_email(socket.assigns.errors, email)
@@ -57,7 +57,7 @@ defmodule MyCalendarWeb.Form do
 
   def handle_event(
         "update_form",
-        %{"_target" => ["form_data", "phone"], "form_data" => %{"phone" => phone}} = form_data,
+        %{"_target" => ["form_data", "phone"], "form_data" => %{"phone" => phone}} = _form_data,
         socket
       ) do
     errors = validate_phone(socket.assigns.errors, phone)
@@ -72,7 +72,7 @@ defmodule MyCalendarWeb.Form do
   def handle_event(
         "update_form",
         %{"_target" => ["form_data", "company"], "form_data" => %{"company" => company}} =
-          form_data,
+          _form_data,
         socket
       ) do
     errors = validate_company(socket.assigns.errors, company)
@@ -82,10 +82,6 @@ defmodule MyCalendarWeb.Form do
        form_data: Map.merge(socket.assigns.form_data, %{"company" => company}),
        errors: errors
      )}
-  end
-
-  def handle_info({:update_parent_state, value}, socket) do
-    {:noreply, assign(socket, form_data: Map.merge(socket.assigns.form_data, value))}
   end
 
   def handle_event(
@@ -104,6 +100,10 @@ defmodule MyCalendarWeb.Form do
 
   def handle_event("prev_step", _params, socket) do
     {:noreply, assign(socket, current_step: max(socket.assigns.current_step - 1, 1))}
+  end
+
+  def handle_info({:update_parent_state, value}, socket) do
+    {:noreply, assign(socket, form_data: Map.merge(socket.assigns.form_data, value))}
   end
 
   defp validate_step(1, form_data) do

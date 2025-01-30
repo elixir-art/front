@@ -111,8 +111,8 @@ defmodule MyCalendarWeb.Form.Contacts do
                   />
                 </div>
               </div>
-              <%= if {assigns.errors["name"]} do %>
-                <p class="text-red-500 text-sm mt-2 ml-2">
+              <%= if assigns.errors["name"] do %>
+                <p class="text-active text-sm mt-2 ml-2">
                   <%= assigns.errors[contact.error_name] %>
                 </p>
               <% end %>
