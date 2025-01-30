@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 const NewPage = () => {
-  // const [selectedServices, setSelectedServices] = useState([]);
-
   const services = [
     { value: "development", label: "Development", icon: "\u{1F4BB}" },
     { value: "web_design", label: "Web Design", icon: "\u{1F4BB}" },
@@ -24,7 +22,7 @@ const NewPage = () => {
   };
 
   const formButton =
-    "p-11 rounded-xl shadow-md border border-neutral_300 peer-checked:border-primary_blue peer-checked:border-2";
+    "p-11 rounded-xl shadow-md ring-1 ring-neutral_300 hover:shadow-lg peer-checked:ring-primary_blue peer-checked:ring-2";
   const h3 = "flex item-start text-xl font-bold mb-2";
 
   return (
@@ -169,17 +167,16 @@ const NewPage = () => {
                   </p>
                 </div>
                 <div>
-                  <form className="grid grid-cols-2 gap-6">
-                    {services.map((service) => (
-                      <label>
-                        <input type="checkbox" className="sr-only peer" />
+                <form className="grid grid-cols-2 gap-6">
+                  {services.map((service) => (
+                    <label className="flex items-center">
+                      <input type="radio" className=" absolute item-center w-5 h-5 peer ml-4" />
 
-                        <div className={`${formButton} flex items-center`}>
-                          <div className="flex flex-row w-6 h-6 rounded-full border border-neutral_300 peer-checked:bg-primary_blue mr-3"></div>
-                          <p className="">$5.000 - $10.000</p>
-                        </div>
-                      </label>
-                    ))}
+                      <div className={`${formButton}`}>
+                        <p className="">$5.000 - $10.000</p>
+                      </div>
+                    </label>
+                  ))}
                   </form>
                 </div>
               </div>
@@ -216,10 +213,11 @@ const NewPage = () => {
             )}
           </div>
         </div>
-        {submit &&(        
+        {submit && (
           <div className="fixed top-0 left-1/2 transform -translate-x-1/2 bg-green-300 text-white p-4 rounded-lg">
-          Form successful submit
-        </div>) }
+            Form successful submit
+          </div>
+        )}
       </div>
     </div>
   );
