@@ -6,3 +6,7 @@
 body {
   @apply bg-white text-gray-900 dark:bg-coldBlack dark:text-customGray;
 }
+
+.blue-button {
+  @apply w-40 h-16 bg-formPrimary-200 text-white px-4 py-2 rounded-button;
+}

@@ -14,11 +14,7 @@ defmodule MyCalendarWeb.Form.Submit do
       <p class="text-gray-500 mb-6">
         Please review all the information you previously typed in the past steps, and if all is okay, submit your message to receive a project quote in 24 - 48 hours.
       </p>
-      <button
-        type="button"
-        class="w-36 h-14 bg-formPrimary-200 text-white px-4 py-2 rounded-button"
-        phx-click="submit_form"
-      >
+      <button type="button" class="blue-button" phx-click="submit_form">
         Submit
       </button>
     </div>

@@ -161,7 +161,7 @@ defmodule MyCalendarWeb.Form do
         </button>
         <button
           type="button"
-          class={"w-40 h-16 bg-formPrimary-200 text-white px-4 py-2 rounded-button #{if @current_step == 4, do: "hidden", else: ""}"}
+          class={"blue-button #{if @current_step == 4, do: "hidden", else: ""}"}
           phx-click="next_step"
           disabled={@current_step == 4}
         >
