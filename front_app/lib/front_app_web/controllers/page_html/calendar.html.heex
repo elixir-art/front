@@ -1,0 +1,35 @@
+<div class={if @dark_mode, do: "dark" , else: "" }>
+  <div class="flex flex-col w-[560px] h-[560px] bg-primary p-[72px] m-auto">
+      <div class="flex text-textp">  
+              <span class="font-bold text-xl flex-1">
+                  <%= @current_month_name %> <%= @current_date.year %>
+              </span>
+          <label class="relative items-center cursor-pointer pr-12">
+                  <input type="checkbox" phx-click="toggle_theme" class="sr-only peer" />
+                  <div class="w-12 h-6 bg-gray-200 dark:bg-gray-700 rounded-full peer"></div>
+              <span class="absolute left-1 dark:left-7 top-1  w-4 h-4 bg-white rounded-full"></span>
+          </label>         
+              <button phx-click="prev_month" class="mr-2">&lt;</button>
+              <button phx-click="next_month" class="ml-2">&gt;</button>
+      </div>    
+      <div class="grid grid-cols-7 text-center text-texts mt-14">        
+        <%= for day <- ~w(Mo Tu We Th Fr Sa Su) do %>
+           <div class="font-semibold text-textp size-14">
+             <%= day %>
+           </div>
+        <% end %>
+        <%= for _ <- @empty_cells do %>
+              <div class="size-14"></div>
+        <% end %>          
+        <%= for day <- @days_month do %>
+          <button class={
+              if @current_date.month==@selected_date.month and day==@selected_date.day and  @current_date.year==@selected_date.year,
+                do: "bg-brand text-white rounded-full size-14" ,
+                else:  "size-14"}
+                   value={day} phx-click="select_day">
+                    <%= day %>
+          </button>
+        <% end %>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+
+@layer base {
+    :root {
+      --color-brand: 251 63 74;
+      --color-primary: 255 255 255;
+      --color-text-primary: 30 31 37;
+      --color-text-secondary: 102 102 102;
+    }
+
+    :root [class~="dark"] {
+        --color-brand: 88 156 95;
+        --color-primary: 30 31 37;
+        --color-text-primary: 255 255 255;
+        --color-text-secondary: 204 204 204;
+        }
+  }
