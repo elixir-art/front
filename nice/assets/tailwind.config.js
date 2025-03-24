@@ -15,6 +15,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        button: "#482be7",
         brand: "#FD4F00",
       }
     },

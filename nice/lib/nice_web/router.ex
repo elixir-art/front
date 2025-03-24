@@ -16,7 +16,8 @@ defmodule NiceWeb.Router do
 
   scope "/", NiceWeb do
     pipe_through(:browser)
-    live("/noCode", NoCode)
+    live("/no_code", NoCode)
+    live("/feature", Feature)
   end
 
   # Other scopes may use custom stacks.
