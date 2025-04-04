@@ -1,0 +1,102 @@
+// See the Tailwind configuration guide for advanced usage
+// https://tailwindcss.com/docs/configuration
+
+const plugin = require("tailwindcss/plugin")
+const fs = require("fs")
+const path = require("path")
+
+module.exports = {
+  content: [
+    "./js/**/*.js",
+    "../lib/front_app_web.ex",
+    "../lib/front_app_web/**/*.*ex"
+  ],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      fontFamily: {
+        poppins: ['Poppins', 'sans-serif'],
+        roboto: ['Roboto', 'ui-sans-serif', 'system-ui'],
+      },
+      colors: {
+        brand: "rgb(var(--color-brand))",
+        primary: "rgb(var(--color-primary))",
+        textp: "rgb(var(--color-text-primary))",
+        texts: "rgb(var(--color-text-secondary))",
+        primary_purple: "rgb(var(--color-primary-purple))",
+        secondary_purple: "rgb(var(--color-secondary-purple))",
+        third_purple: "rgb(var(--color-third-purple))",
+        light_purple: "rgb(var(--color-light-purple))",
+        additional_purple: "rgb(var(--color-additional-purple))",
+        menu_primary: "rgb(var(--color-menu-primary))",
+        menu_text_secondary: "rgb(var(--color-menu-text-secondary))",
+        red: "rgb(var(--color-red))",
+        dashboard_background: "rgb(var(--color-dashboard-background))",
+        pink: "rgba(var(--color-pink))",
+        blue: "rgba(var(--color-blue))",
+        purple: "rgba(var(--color-purple))",
+        coral: "rgba(var(--color-coral))",
+        dark_blue: "rgba(var(--color-dark-blue))",
+        text_blue: "rgba(var(--color-text-blue))",
+        text_purple: "rgba(var(--color-text-purple))",
+        subtitle: "rgb(var(--color-subtitle))",
+        border: "rgb(var(--color-border))",
+        subtitle_secondary: "rgb(var(--color-subtitle-secondary))",
+        dark_blue_header: "rgb(var(--color-dark-blue-header))",
+      }
+    },
+  },
+  plugins: [
+    require("@tailwindcss/forms"),
+    // Allows prefixing tailwind classes with LiveView classes to add rules
+    // only when LiveView classes are applied, for example:
+    //
+    //     <div class="phx-click-loading:animate-ping">
+    //
+    plugin(({addVariant}) => addVariant("phx-click-loading", [".phx-click-loading&", ".phx-click-loading &"])),
+    plugin(({addVariant}) => addVariant("phx-submit-loading", [".phx-submit-loading&", ".phx-submit-loading &"])),
+    plugin(({addVariant}) => addVariant("phx-change-loading", [".phx-change-loading&", ".phx-change-loading &"])),
+
+    // Embeds Heroicons (https://heroicons.com) into your app.css bundle
+    // See your `CoreComponents.icon/1` for more information.
+    //
+    plugin(function({matchComponents, theme}) {
+      let iconsDir = path.join(__dirname, "../deps/heroicons/optimized")
+      let values = {}
+      let icons = [
+        ["", "/24/outline"],
+        ["-solid", "/24/solid"],
+        ["-mini", "/20/solid"],
+        ["-micro", "/16/solid"]
+      ]
+      icons.forEach(([suffix, dir]) => {
+        fs.readdirSync(path.join(iconsDir, dir)).forEach(file => {
+          let name = path.basename(file, ".svg") + suffix
+          values[name] = {name, fullPath: path.join(iconsDir, dir, file)}
+        })
+      })
+      matchComponents({
+        "hero": ({name, fullPath}) => {
+          let content = fs.readFileSync(fullPath).toString().replace(/\r?\n|\r/g, "")
+          let size = theme("spacing.6")
+          if (name.endsWith("-mini")) {
+            size = theme("spacing.5")
+          } else if (name.endsWith("-micro")) {
+            size = theme("spacing.4")
+          }
+          return {
+            [`--hero-${name}`]: `url('data:image/svg+xml;utf8,${content}')`,
+            "-webkit-mask": `var(--hero-${name})`,
+            "mask": `var(--hero-${name})`,
+            "mask-repeat": "no-repeat",
+            "background-color": "currentColor",
+            "vertical-align": "middle",
+            "display": "inline-block",
+            "width": size,
+            "height": size
+          }
+        }
+      }, {values})
+    })
+  ]
+}

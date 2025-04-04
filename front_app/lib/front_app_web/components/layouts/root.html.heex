@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title suffix=" · Phoenix Framework">
+      <%= assigns[:page_title] || "FrontApp" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;200;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-slate-100 flex">
+    <ul
+    class="bg-menu_primary pt-8 w-60 h-screen fixed sm:relative transform sm:translate-x-0 -translate-x-full transition-transform ">
+    <li class="text-4xl font-bold flex text-center h-20">
+      <a href="/dashboard">WeHR</a>
+    </li>
+    <div class="text-menu_text_secondary self-start pl-7">
+      <p class="pt-4">MAIN MENU</p>
+      <li class="pt-8 flex items-center text-red">
+        <svg class="text-red size-5 mr-6">
+          <use href="/images/icons.svg#vector" />
+        </svg>
+        <a href="/dashboard">Dashboard</a>
+      </li>
+      <li class="pt-8 flex items-center">
+        <svg class="size-6 mr-5">
+          <use href="/images/icons.svg#recruitment"></use>
+        </svg>
+        <a href="/">Home</a>
+      </li>
+      <li class="pt-8 flex items-center">
+        <svg class="size-6 mr-5">
+          <use href="/images/icons.svg#calendar"></use>
+        </svg>
+        <a href="/calendar">Calendar</a>
+      </li>
+      <li class="pt-8">
+        <a href="/to_do">To do</a>
+      </li>
+    </div>
+  </ul>
+    <div class="flex-grow">
+      <%= @inner_content %>
+    </div>
+  </body>
+</html>
